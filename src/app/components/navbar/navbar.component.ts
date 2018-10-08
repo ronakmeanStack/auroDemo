@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   constructor() { }
-  role :String;
-  name:String;
+  role=localStorage.getItem('role');
+name=localStorage.getItem('user');
   public _opened: boolean = false;
  
   public _toggleSidebar() {
