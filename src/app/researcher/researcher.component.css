@@ -1,0 +1,47 @@
+ h1,h2,h3,h4,h5,h6{
+    margin: 0;
+  }
+.card{
+  padding: 20px;
+  color: white;
+  border-radius: 1px;
+  width: 100%;
+}
+.card-1{
+background-color: darkblue;
+}
+.card-2{
+  background-color: darkcyan;
+}
+.card-3{
+   background-color: grey;
+}
+.card-title{
+  font-weight: 500;
+  font-size: 36px;
+}
+.card-text{
+  font-size: 24px;
+  height: 100px;
+}
+.card-text-sub{
+ 
+  font-size: 18px;
+  font-weight: normal;
+}
+.arrow{
+  position: relative;
+}
+.angle-icon{
+  position: absolute;
+  right: -10px;
+  top: 80px;
+  font-size: 50px;
+  border-radius: 100%;
+  background-color: lightgray;
+ padding: 10px 35px;
+}
+.col-pd > .col-md-4{
+  padding-right: 4px;
+  padding-left: 4px;
+} 
