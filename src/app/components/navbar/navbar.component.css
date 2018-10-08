@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.navbar{
+	height: 100px;
+	background-color: #f2f2f2 !important;
+	border-radius: 4px;
+	border: none;
+	/*margin: 10px 10px;*/
+}
+.navbar-header{
+	position: relative;
+	line-height: 50px;
+}
+.navbar-header span{
+	color: #212529;
+	font-size: 26px;
+	margin-left: 20px;
+}
+.navbar-header img{
+	position: absolute;
+	top: 5px;
+	left: 8px;
+	width: 120px;
+}
+.search-block{
+	width:33.33%;
+}
+.search-block .navbar-form{
+	display: block;
+	width: 100%;
+}
+.search-block .navbar-form div input {
+	width: 100%;
+	padding: 22px 15px;
+	border-radius: 25px;
+	border:none;
+	box-shadow: none;
+}
+.media-object{
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.noti-icon{
+	background-color: red;
+	color: #fff;
+	border-radius: 50%;
+	text-align: center;
+	padding: 1px 5px;
+	font-size: 12px;
+}
+.media-right{
+	position: relative;
+}
+.media-body{
+	line-height: 1.1;
+}
+.media-heading{
+	font-weight: bold;
+}
+.media-right span{
+	position: absolute;
+	bottom: 0;
+	left: 35px;
+}
+/* Sidebar-nav */
+.ng-sidebar {
+    background: red;
+}
+#sidebar {
+    min-width: 100px;
+	max-width: 100px;
+	background: #000000a6/*#000111*//*#54B4AB*/;/*#3B5899;*/
+    color: #000;
+    transition: all 0.3s;
+    height: 100%;
+    border: 0;
+    padding-top:14px; 
+}
+#sidebar ul li{
+	list-style: none;
+ /*padding: 1px 10px; */
+}
+
+#sidebar ul li a {
+    /*padding: 10px;*/
+    /*font-size: 1.7em;*/
+	display: block;
+	text-decoration: none;
+	color:  #fff;
+	font-weight: 400;
+
+}
+
+#sidebar ul li a img{
+    /*padding: 10px;*/
+    height: 65%;
+    width: 65%;
+}
+#sidebar ul li a .fa{
+ height: 65%;
+    width: 65%;
+}
+#sidebar ul li small{
+color: #fff;
+	}
+#sidebar ul {
+	padding:0; 
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+	/*background: rgb(248, 246, 246);*/
+	outline-style: none;
+}
+#sidebar ul li a:focus {
+    color: #000;
+	outline-style: none;
+}
+._toggle{
+	border: .18rem solid rgb(70, 67, 67);
+	background: transparent;
+	border-left: 0;
+	border-right: 0;
+	cursor: pointer;
+	height: 1.5rem;
+	position: relative;
+	width: 1.8rem;
+	outline-style: none;
+	left: 10px;
+	top: -5px;
+	z-index: 1;
+}
+._toggle::after {
+    background: #fff;
+    content: "";
+    height: .18rem;
+    left: 0;
+    margin-top: -.075rem;
+    position: absolute;
+    top: 50%;
+	width: 100%;
+	background-color: rgb(70, 67, 67);
+}
+
+.sidebar-header {
+	color:#3B5899;
+}
+
+/* /sidebar-nav */
+

@@ -1,0 +1,110 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/app">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/app/d2"   routerLinkActive="active">Link1</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" routerLink="/app/d1"   routerLinkActive="active">Link2</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+        <a class="nav-link" (click)="Logout()"   routerLinkActive="active" routerLinkActive="active">Logout</a>
+      </li>
+
+    </ul>
+  </div>
+</nav> -->
+
+<ng-sidebar-container style="position: fixed;">
+    <!-- A sidebar -->
+  <ng-sidebar [(opened)]="_opened" mode="over" closeOnClickOutside=false>
+     <nav id="sidebar">
+       <!--  <a class="navbar-brand text-center" href="#"><img src="assets/logo.png" width="230px" height="50px" class="logo" alt="brand logo"></a> -->
+        <ul class="components text-center">
+            <li>
+                <!-- <a routerLink="/app/d2">Home</a> -->
+                <a href="#">
+                  <img src="assets/home.png">
+                </a>
+                  <small>Home</small>
+            </li>
+            <li>
+                <!-- <a routerLink="/app/d1">Researcher</a> -->
+               <a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a> 
+                <small>Researcher</small>
+            </li>
+            <li>
+                <a href="#">Page </a>
+            </li>
+            <li>
+                <a href="#">Portfolio</a>
+            </li>
+            <li>
+                <a *ngIf="role=='admin'" routerLink="/app/setting">Setting</a>
+            </li>
+             <li>
+                <a  routerLink="/login">Logout</a>
+            </li>
+        </ul>
+        </nav>
+  
+  </ng-sidebar>
+
+    <!-- Page content -->
+    <div ng-sidebar-content>
+      
+      <nav class="navbar navbar-dark bg-dark">
+         
+          <div class="navbar-header">
+              <button (click)="_toggleSidebar()" class="_toggle"></button>
+            <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="brand logo"></a>
+          </div>
+          <div class="search-block">
+            <form class="navbar-form">
+            <div class="input-group">
+              <input type="text" class="form-control" name="search" id="search" placeholder="Search">
+             <span class="glyphicon glyphicon-search"></span>
+            </div>
+           </form>
+          </div>
+        
+           <div class="nav navbar-nav navbar-right">
+              <div class="media">
+              <div class="media-body text-right mt-3 mr-2 p-0">
+                <p class="media-heading mb-0 p-0">{{name}}</p>
+                <small class="mb-0 p-0">{{role}}</small>
+              </div>
+            <div class="media-right">
+              <img src="assets/img_avatar.png" class="media-object" >
+              <span class="noti-icon">2</span>
+            </div>
+            </div>
+            </div> 
+          </nav> 
+
+          <router-outlet></router-outlet>
+          <div class="footer">
+            <app-footer></app-footer>
+          </div>
+    </div>
+
+  </ng-sidebar-container>
+
+
