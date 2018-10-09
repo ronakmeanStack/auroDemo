@@ -56,17 +56,13 @@
 
             </div>
         </div>
-
-
-
-
-        <div class="col-md-1">
+    <!--  <div class="col-md-1">
             <div class="row arrow">
               <div class="co-12 angle-icon ">
                 <a><i class="fa fa-angle-right" aria-hidden="true"></i></a>
               </div>
             </div>
-      </div>
+      </div> -->
 
     </div>
 </div> 
@@ -110,34 +106,6 @@
 
 </div>
 
-
-<!-- modal -->
-
- <!-- <div class="modal inmodal rounded-corners "   id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
-  <div class="modal-dialog modal-lg rounded-corners " style="width:100%">
-    <div class="modal-content animated fadeIn rounded-corners " style="background-color: rgb(239, 236, 236);">
-      <div class="rounded-corners" style="background-color: rgb(239, 236, 236); text-align:center;">
-      </div>
-      <div class="panel panel-default">
-        <button type="button" class="close" data-dismiss="modal" (click)="closemodal($event)" >&times;</button>
-        <div class="panel-body" >
-          <p>hello</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>  -->
-
-
-
-
-
-<!-- end modal -->
-
-
 <!-- my modal -->
 <div class="modal" id="myModal">
     <div class="modal-dialog">
@@ -173,10 +141,15 @@
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
               <div class="col-md-8">
-            <label class="switch">
+          <!--   <label class="switch">
                 <input type="checkbox" [(ngModel)]="drugsAurobindo">
                 <span class="slider round"></span>
-              </label>
+              </label> -->
+              <label class="switch">
+                  <input class="switch-input" type="checkbox" />
+                  <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                  <span class="switch-handle"></span> 
+                 </label>
             </div>
                </div>
                <div class="row">
@@ -277,10 +250,15 @@
                                           </label>
                                           </div>
                                           <div class="col-md-3">
-                                              <label class="switch">
+                                             <!--  <label class="switch">
                                                   <input type="checkbox" [(ngModel)]="brandDrag">
                                                   <span class="slider round"></span>
-                                                </label>
+                                                </label> -->
+                                                 <label class="switch">
+                                                  <input class="switch-input" type="checkbox" />
+                                                  <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                                                  <span class="switch-handle"></span> 
+                                                 </label>
                                         </div>
                                            </div>
                                            <label class="text-primary">Author Comments</label>

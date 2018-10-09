@@ -58,10 +58,10 @@
                 <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                 <small>Portfolio</small>
             </li>
-            <li>
+            <!-- <li>
                 <a *ngIf="role=='admin'" routerLink="/app/setting"><i class="fa fa-cogs" aria-hidden="true"></i></a>
                 <small>Setting</small>
-            </li>
+            </li> -->
              <li>
                 <a  routerLink="/login"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                 <small>Logout</small>
@@ -78,7 +78,7 @@
          
           <div class="navbar-header">
               <button (click)="_toggleSidebar()" class="_toggle"></button>
-            <a class="navbar-brand" href="#"><img src="assets/logo.png" alt="brand logo"></a>
+            <img src="assets/logo.png" alt="brand logo">
           </div>
           <div class="search-block">
             <form class="navbar-form">
