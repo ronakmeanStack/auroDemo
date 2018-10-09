@@ -85,18 +85,14 @@
                     <div class="article-text">
                             <p class="mb-0">{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
                                 <div class="pull-right d-none">
-                                    <a href="" (click)="openfullmode(x)">Full view</a><br>
-                                    <a href="">Remove</a>
-                                    <button (click)="openfullmode(x)">get</button>>
+                                   
+                                     <button type="button" class="btn btn-default btn-sm" (click)="openfullmode(x)" >Full view</button>
+                                        <button type="button" class="btn btn-default btn-sm">Remove</button>
                                 </div> 
                             
                         </div>
                 </article>
-               
-                    
-            
-               
-               
+                  
             </div>
             
         </div>
@@ -117,23 +113,26 @@
 
 <!-- modal -->
 
-<div id="myModal" class="modal">
-        <div class="modal-content">
-         
-            <div class="create-note-box">
-              <span class="close" (click)="closemodal()">&times;</span>
-              <br>
-              <form>
-                
-
-                <h1>hello</h1> 
-                
-
-               
-              </form>
-            </div>
-            <!-- /create-note-box -->
-         
+<div class="modal inmodal rounded-corners "   id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog modal-lg rounded-corners " style="width:100%">
+    <div class="modal-content animated fadeIn rounded-corners " style="background-color: rgb(239, 236, 236);">
+      <div class="rounded-corners" style="background-color: rgb(239, 236, 236); text-align:center;">
+      </div>
+      <div class="panel panel-default">
+        <button type="button" class="close" data-dismiss="modal" (click)="closemodal($event)" >&times;</button>
+        <div class="panel-body" >
+          <p>hello</p>
         </div>
       </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
 <!-- end modal -->

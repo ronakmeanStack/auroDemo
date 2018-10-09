@@ -89,8 +89,16 @@ background-color: darkblue;
 .article-text div{
   position: absolute;
   font-size: 14px;
-  right: -55px;
-  top: 0;
+  right: -65px;
+  bottom: -10px;
+}
+.article-text .d-none button{
+  margin: 3px;
+  font-size: 10px;
+  border-radius: 5px;
+  outline-style: none;
+  box-shadow: none;
+  cursor: pointer;
 }
 .icon-circle{
   text-align: center;
