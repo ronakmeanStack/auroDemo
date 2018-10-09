@@ -77,4 +77,9 @@ closemodal() {
              console.log(error);
            });
      }
+
+
+     next(){
+       console.log("clicked")
+     }
 }
