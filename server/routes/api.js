@@ -27,5 +27,8 @@ app.post('/updateuser', function(req, res, next){
 app.get('/getuser',function(req,res,next){
   dashboard.getuser(req,res);
 })
+app.get('/getsrchresult',function(req,res,next){
+  dashboard.getsearchresult(req,res);
+})
 
 module.exports = app;

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { LoginService } from './service';
+
 import { HttpModule } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 
@@ -18,7 +18,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarModule } from 'ng-sidebar';
-
+//service
+import{LoginService} from './login/login.service'
+import {ResearchdataService} from './services/research.service'
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, NavbarComponent, FooterComponent],
   imports: [
@@ -29,8 +31,9 @@ import { SidebarModule } from 'ng-sidebar';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     SidebarModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,ResearchdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

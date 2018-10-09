@@ -1,9 +1,10 @@
 module.exports = {
 
   'mysql': {
-    host     : 'localhost',
-    user     : 'root',
-    password : 'root',
-    database : 'employee'
+    host     : 'mysql.dev.wonderwe.com',
+    user     : 'trinesh',
+    password : 'trinesh1$',
+    database : 'wonderwe_development',
+    port:33076
   }
 }

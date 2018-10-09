@@ -1,4 +1,4 @@
- h1,h2,h3,h4,h5,h6{
+h1,h2,h3,h4,h5,h6{
     margin: 0;
   }
 .card{
@@ -45,3 +45,87 @@ background-color: darkblue;
   padding-right: 4px;
   padding-left: 4px;
 } 
+/* article css start */
+*{
+  box-sizing: border-box;
+}
+.title-gray{
+
+  font-weight: normal;
+}
+.scroll-area{
+  border: 2px solid #f2f2f2;
+  padding: 10px;
+}
+.scrollspy{
+  max-height: 350px;
+  overflow-y:scroll;
+}
+.article{
+  padding: 15px;
+  margin: 10px;
+
+}
+.article:hover{
+  border-radius: 10px;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.article-title{
+  color: dodgerblue;
+  font-weight: bold;
+  font-size: 19px;
+  width: 95%;
+  position: relative;
+}
+.article-text{
+  font-size: 18px;
+  color: black;
+  width: 95%;
+  position: relative;
+}
+.article-text div{
+  position: absolute;
+  font-size: 14px;
+  right: -55px;
+  top: 0;
+}
+.icon-circle{
+  text-align: center;
+  background-color:#f2f2f2;
+  border-radius: 50%;
+  padding: 5px 15px;
+  position: relative;
+  top: -45px;
+  left: -50px;
+}
+.icon-circle_a{
+ color:white;
+ background-color:#3771dd;
+ font-size: 14px;
+ padding: 5px 12px;
+ position: absolute;
+ top: 0;
+ right: -55px;
+ border-radius: 50%;
+}
+.article-icon {
+  background: #f2f2f2;
+  padding: 10px 15px;
+  border-radius: 10px;
+  position: relative;
+  left: -45px;
+}
+.article-icon > a{
+  padding-left: 15px;
+}
+.article:hover .icon-circle_a{
+  color: black ;
+  background-color: #ccc;
+
+}
+.article:hover .d-none {
+  display: inline-block !important;
+}

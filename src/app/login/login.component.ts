@@ -1,44 +1,12 @@
-/*import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
-export class LoginComponent implements OnInit {
 
-  constructor(private _router: Router,) { }
-role="researcher"
-loginForm:any;
-submitted:any;
-f:any;
-onSubmit:any;
-  ngOnInit() {
-  }
-  login(email, password){
-   
-
-  	if(this.role=="admin"){
-  		this._router.navigate(['/app/admin']);
-  	}
-    else if(this.role=="researcher"){
-      console.log("here")
-     this._router.navigate(['/app/researcher']);
-    }
-  	else{
-  	    this._router.navigate(['/app/user']);	
-  	}
-  	
-  }
-
-}
-*/
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
-
+import "rxjs/Rx";
+import { Observable } from 'rxjs';
+import {LoginService} from './login.service'
+import{ResearchdataService} from '../services/research.service'
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
@@ -46,12 +14,14 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-role;
-name;
+ roletype;
+  name;
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
+        private loginService:LoginService,
+        private researchdataService:ResearchdataService
         ) {}
 
     ngOnInit() {
@@ -68,9 +38,10 @@ name;
     onSubmit() {
         this.submitted = true;
         console.log("-------",this.f.username.value)
+        this.loginService.login(this.f.username.value,this.f.password.value)
+        .subscribe(res => console.log("--res",res))
 
-
- if (this.f.username.value == 'tripathy@aurobindo.com' && this.f.password.value == 'tripathy@123') {
+         if (this.f.username.value == 'tripathy@aurobindo.com' && this.f.password.value == 'tripathy@123') {
             this.router.navigate(['/app/researcher']);
             localStorage.setItem('role', 'Researcher');
             localStorage.setItem('user', ' Dr tripathy');
@@ -91,21 +62,84 @@ name;
 
         if(this.f.username.value)
 
-        // stop here if form is invalid
+        
         if (this.loginForm.invalid) {
             return;
         }
 
-       /* this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });*/
+      
     }
+    getdata(){
+      alert("------")
+      this.researchdataService.getreseachdata();
+    }
+   
+
+
+/* onSubmit(event, email, password) {
+    if(email && password != null ){
+      console.log("not null")
+      event.preventDefault();
+      
+     this.loginService.login(this.f.username.value,this.f.password.value)
+        .subscribe(response => {
+          console.log("-----response",response.role)
+          if(response.save === true){
+            localStorage.apiToken=response.token
+            //this.showSuccess()
+            var role= response.role;
+            this.name =response.name;
+            if(role==3){
+              this.roletype="admin"
+            }
+            else if(role==2){
+              this.roletype="Reviewer"
+            }
+            else if(role==1){
+             this.roletype="Researcher"
+            }
+            localStorage.setItem('name',this.name)
+            localStorage.setItem('role',this.roletype)
+           
+
+           switch (role) {
+             case 3:
+               this.router.navigate(['/app/admin']);
+               break;
+             
+               case 2:
+               this.router.navigate(['/app/user']);
+               break;
+
+               case 1:
+              this.router.navigate(['/app/researcher']);
+           
+               break;
+
+             default:
+               
+               break;
+           }
+           
+            
+          }
+          else if(response.save === false){
+            
+           
+            console.log("password or user not matching 11")
+          }
+          }, this.handleError);
+    }
+    else{
+      console.log("password or user not matching")
+       
+    }
+  }
+
+  handleError(error) {
+    console.log(error.status);
+  }*/
+
+
+
 }
