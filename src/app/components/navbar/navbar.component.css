@@ -31,6 +31,31 @@ body {
 	left: 8px;
 	width: 120px;
 }
+._toggle{
+	border: .18rem solid rgb(70, 67, 67);
+	background: transparent;
+	border-left: 0;
+	border-right: 0;
+	cursor: pointer;
+	height: 1.5rem;
+	position: relative;
+	width: 1.8rem;
+	outline-style: none;
+	left: 10px;
+	top: -5px;
+	z-index: 1;
+}
+._toggle::after {
+    background: #fff;
+    content: "";
+    height: .18rem;
+    left: 0;
+    margin-top: -.075rem;
+    position: absolute;
+    top: 50%;
+	width: 100%;
+	background-color: rgb(70, 67, 67);
+}
 .search-block{
 	width:33.33%;
 }
@@ -87,74 +112,32 @@ body {
     border: 0;
     padding-top:14px; 
 }
+#sidebar ul{
+	padding: 0;
+	text-align: center;
+}
 #sidebar ul li{
 	list-style: none;
- /*padding: 1px 10px; */
 }
 
 #sidebar ul li a {
-    /*padding: 10px;*/
-    /*font-size: 1.7em;*/
 	display: block;
 	text-decoration: none;
 	color:  #fff;
-	font-weight: 400;
+	font-size: 25px;
 
-}
-
-#sidebar ul li a img{
-    /*padding: 10px;*/
-    height: 65%;
-    width: 65%;
-}
-#sidebar ul li a .fa{
- height: 65%;
-    width: 65%;
 }
 #sidebar ul li small{
-color: #fff;
-	}
-#sidebar ul {
-	padding:0; 
+	color: #fff;
+	font-size: 16px;
 }
+
 #sidebar ul li a:hover {
     color: #7386D5;
 	/*background: rgb(248, 246, 246);*/
 	outline-style: none;
 }
 #sidebar ul li a:focus {
-    color: #000;
+    color: #fff;
 	outline-style: none;
 }
-._toggle{
-	border: .18rem solid rgb(70, 67, 67);
-	background: transparent;
-	border-left: 0;
-	border-right: 0;
-	cursor: pointer;
-	height: 1.5rem;
-	position: relative;
-	width: 1.8rem;
-	outline-style: none;
-	left: 10px;
-	top: -5px;
-	z-index: 1;
-}
-._toggle::after {
-    background: #fff;
-    content: "";
-    height: .18rem;
-    left: 0;
-    margin-top: -.075rem;
-    position: absolute;
-    top: 50%;
-	width: 100%;
-	background-color: rgb(70, 67, 67);
-}
-
-.sidebar-header {
-	color:#3B5899;
-}
-
-/* /sidebar-nav */
-

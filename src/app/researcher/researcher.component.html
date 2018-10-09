@@ -85,8 +85,9 @@
                     <div class="article-text">
                             <p class="mb-0">{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
                                 <div class="pull-right d-none">
-                                    <a href="#">Full view</a><br>
-                                    <a href="#">Removie</a>
+                                    <a href="" (click)="openfullmode(x)">Full view</a><br>
+                                    <a href="">Remove</a>
+                                    <button (click)="openfullmode(x)">get</button>>
                                 </div> 
                             
                         </div>
@@ -112,3 +113,27 @@
     </div>
 
 </div>
+
+
+<!-- modal -->
+
+<div id="myModal" class="modal">
+        <div class="modal-content">
+         
+            <div class="create-note-box">
+              <span class="close" (click)="closemodal()">&times;</span>
+              <br>
+              <form>
+                
+
+                <h1>hello</h1> 
+                
+
+               
+              </form>
+            </div>
+            <!-- /create-note-box -->
+         
+        </div>
+      </div>
+<!-- end modal -->

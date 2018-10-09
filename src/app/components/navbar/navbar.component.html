@@ -37,11 +37,11 @@
   <ng-sidebar [(opened)]="_opened" mode="over" closeOnClickOutside=false>
      <nav id="sidebar">
        <!--  <a class="navbar-brand text-center" href="#"><img src="assets/logo.png" width="230px" height="50px" class="logo" alt="brand logo"></a> -->
-        <ul class="components text-center">
+        <ul>
             <li>
                 <!-- <a routerLink="/app/d2">Home</a> -->
-                <a href="#">
-                  <img src="assets/home.png">
+                <a href="#"><i class="fa fa-home" aria-hidden="true"></i>
+                  <!-- <img src="assets/home.png"> -->
                 </a>
                   <small>Home</small>
             </li>
@@ -51,16 +51,20 @@
                 <small>Researcher</small>
             </li>
             <li>
-                <a href="#">Page </a>
+                <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i> </a>
+                <small>Page</small>
             </li>
             <li>
-                <a href="#">Portfolio</a>
+                <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                <small>Portfolio</small>
             </li>
             <li>
-                <a *ngIf="role=='admin'" routerLink="/app/setting">Setting</a>
+                <a *ngIf="role=='admin'" routerLink="/app/setting"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+                <small>Setting</small>
             </li>
              <li>
-                <a  routerLink="/login">Logout</a>
+                <a  routerLink="/login"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                <small>Logout</small>
             </li>
         </ul>
         </nav>
@@ -100,11 +104,9 @@
           </nav> 
 
           <router-outlet></router-outlet>
-         <!--  <div class="footer">
+          <div class="footer">
             <app-footer></app-footer>
-          </div> -->
+          </div>
     </div>
 
   </ng-sidebar-container>
-
-

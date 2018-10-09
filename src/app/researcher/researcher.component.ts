@@ -18,5 +18,12 @@ export class ResearcherComponent implements OnInit {
               console.log("---data",this.data)
             });       
         }
+
+
+        openfullmode(data){
+           alert("click")
+           console.log("----------full view data view",data)
+
+        }
   
 }
