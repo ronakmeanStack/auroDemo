@@ -1,139 +1,154 @@
 h1,h2,h3,h4,h5,h6{
-    margin: 0;
-  }
+   margin: 0;
+ }
 .card{
-  padding: 20px;
-  color: white;
-  border-radius: 1px;
-  width: 100%;
+ padding: 20px;
+ color: white;
+ border-radius: 1px;
+ width: 100%;
 }
 .card-1{
 background-color: darkblue;
 }
 .card-2{
-  background-color: darkcyan;
+ background-color: darkcyan;
 }
 .card-3{
-   background-color: grey;
+  background-color: grey;
 }
 .card-title{
-  font-weight: 500;
-  font-size: 36px;
+ font-weight: 500;
+ font-size: 36px;
 }
 .card-text{
-  font-size: 24px;
-  height: 100px;
+ font-size: 24px;
+ height: 100px;
 }
 .card-text-sub{
- 
-  font-size: 18px;
-  font-weight: normal;
+
+ font-size: 18px;
+ font-weight: normal;
 }
 .arrow{
-  position: relative;
+ position: relative;
 }
 .angle-icon{
-  position: absolute;
-  right: -10px;
-  top: 80px;
-  font-size: 50px;
-  border-radius: 100%;
-  background-color: lightgray;
- padding: 10px 35px;
+ position: absolute;
+ right: -10px;
+ top: 80px;
+ font-size: 50px;
+ border-radius: 100%;
+ background-color: lightgray;
+padding: 10px 35px;
 }
 .col-pd > .col-md-4{
-  padding-right: 4px;
-  padding-left: 4px;
-} 
+ padding-right: 4px;
+ padding-left: 4px;
+}
 /* article css start */
 *{
-  box-sizing: border-box;
+ box-sizing: border-box;
 }
 .title-gray{
 
-  font-weight: normal;
+ font-weight: normal;
 }
 .scroll-area{
-  border: 2px solid #f2f2f2;
-  padding: 10px;
+ border: 2px solid #f2f2f2;
+ padding: 10px;
 }
 .scrollspy{
-  max-height: 350px;
-  overflow-y:scroll;
+ max-height: 350px;
+ overflow-y:scroll;
 }
 .article{
-  padding: 15px;
-  margin: 10px;
+ padding: 15px;
+ margin: 10px;
 
 }
 .article:hover{
-  border-radius: 10px;
-  border: none;
-  background-color: #ccc;
-  cursor: pointer;
+ border-radius: 10px;
+ border: none;
+ background-color: #ccc;
+ cursor: pointer;
 }
 
 .article-title{
-  color: dodgerblue;
-  font-weight: bold;
-  font-size: 19px;
-  width: 95%;
-  position: relative;
+ color: dodgerblue;
+ font-weight: bold;
+ font-size: 19px;
+ width: 95%;
+ position: relative;
 }
 .article-text{
-  font-size: 18px;
-  color: black;
-  width: 95%;
-  position: relative;
+ font-size: 18px;
+ color: black;
+ width: 95%;
+ position: relative;
 }
 .article-text div{
-  position: absolute;
-  font-size: 14px;
-  right: -65px;
-  bottom: -10px;
+ position: absolute;
+ font-size: 14px;
+ right: -65px;
+ bottom: -10px;
 }
 .article-text .d-none button{
-  margin: 3px;
-  font-size: 10px;
-  border-radius: 5px;
-  outline-style: none;
-  box-shadow: none;
-  cursor: pointer;
+ margin: 3px;
+ font-size: 10px;
+ border-radius: 5px;
+ outline-style: none;
+ box-shadow: none;
+ cursor: pointer;
 }
 .icon-circle{
-  text-align: center;
-  background-color:#f2f2f2;
-  border-radius: 50%;
-  padding: 5px 15px;
-  position: relative;
-  top: -45px;
-  left: -50px;
+ text-align: center;
+ background-color:#f2f2f2;
+ border-radius: 50%;
+ padding: 5px 15px;
+ position: relative;
+ top: -45px;
+ left: -50px;
 }
 .icon-circle_a{
- color:white;
- background-color:#3771dd;
- font-size: 14px;
- padding: 5px 12px;
- position: absolute;
- top: 0;
- right: -55px;
- border-radius: 50%;
+color:white;
+background-color:#3771dd;
+font-size: 14px;
+padding: 5px 12px;
+position: absolute;
+top: 0;
+right: -55px;
+border-radius: 50%;
 }
 .article-icon {
-  background: #f2f2f2;
-  padding: 10px 15px;
-  border-radius: 10px;
-  position: relative;
-  left: -45px;
+ background: #f2f2f2;
+ padding: 10px 15px;
+ border-radius: 10px;
+ position: relative;
+ left: -45px;
 }
 .article-icon > a{
-  padding-left: 15px;
+ padding-left: 15px;
 }
 .article:hover .icon-circle_a{
-  color: black ;
-  background-color: #ccc;
+ color: black ;
+ background-color: #ccc;
 
 }
 .article:hover .d-none {
-  display: inline-block !important;
+ display: inline-block !important;
+}
+.modal-content{
+ width: 811px;
+   margin-left: -141px;
+}
+
+/* pop up css */
+.modal-backdrop {
+position: initial !important;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: 1040;
+background-color: #000 !important;
 }

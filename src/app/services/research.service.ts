@@ -25,4 +25,7 @@ export class ResearchdataService {
    return this.httpClient.get('/api/getsrchresult');
    
 }
+checkListData(obj): Observable<any>  {
+ return this.httpClient.post('/api/getsrchresult', obj);
+ }
 }

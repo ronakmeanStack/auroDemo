@@ -30,5 +30,8 @@ app.get('/getuser',function(req,res,next){
 app.get('/getsrchresult',function(req,res,next){
   dashboard.getsearchresult(req,res);
 })
+app.post('reviewarticle',function(req,res,next){
+  dashboard.savereview(req,res);
+})
 
 module.exports = app;

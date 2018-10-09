@@ -68,7 +68,8 @@ connection.query('SELECT * FROM search_results;',
   },
 
 
-  getuser:function(req,res){
-  	console.log("----hitedSSSS----11111s")
+  savereview:function(req,res){
+    data=req.body;
+  	console.log("----hitedSSSS----11111s",data)
   }
 }
