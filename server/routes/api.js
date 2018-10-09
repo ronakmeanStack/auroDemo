@@ -30,8 +30,14 @@ app.get('/getuser',function(req,res,next){
 app.get('/getsrchresult',function(req,res,next){
   dashboard.getsearchresult(req,res);
 })
-app.post('reviewarticle',function(req,res,next){
+app.post('/reviewarticle',function(req,res,next){
   dashboard.savereview(req,res);
+})
+app.post('/test',function(req,res,next){
+  dashboard.test(req,res);
+})
+app.post('/deleteart',function(req,res,next){
+  dashboard.deleteart(req,res);
 })
 
 module.exports = app;

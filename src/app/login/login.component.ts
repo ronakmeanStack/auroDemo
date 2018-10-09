@@ -69,10 +69,7 @@ export class LoginComponent implements OnInit {
 
       
     }
-    getdata(){
-      alert("------")
-      this.researchdataService.getreseachdata();
-    }
+    
    
 
 

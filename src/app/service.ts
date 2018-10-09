@@ -18,4 +18,16 @@ export class LoginService {
       })
       .subscribe(res => res.json);
   }
+  savereviewdata(){
+     const headers = new Headers();
+    var data = [{ username: 'email', password: 'password' }];
+    console.log('mail ' + JSON.stringify(data));
+    headers.append('Content-Type', 'application/json');
+    return this._http
+      .post('/api/login', JSON.stringify(data), {
+        headers: headers,
+        withCredentials: true
+      })
+      .subscribe(res => res.json);
+  }
 }
