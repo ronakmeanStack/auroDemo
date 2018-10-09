@@ -21,38 +21,39 @@
     <p class="text-center"><a href="#">Create an Account</a></p>
 </div>
 </div> -->
-<div class="login">
+<div class="login login-bg">
 
 <div class="container login-form mt-5">
     <div class="row justify-content-md-center form-border">
-        <div class="col-md-5 col-md-auto" >
+        <div class="col-md-5 col-md-auto" style="background: rgba(83, 180, 168, 0.1);border-radius: 25px;padding: 25px 20px;" >
             <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-       <div class="login-logo text-center mb-3"> <img src="assets/logo-1.png" alt="brand logo"></div>
-        <h3 class="text-center mb-3">LITERATURE MONITORING</h3>       
-        <div class="form-group">
-            <input type="text" formControlName="username" class="form-control" placeholder="User Name" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-        </div>
-        <div class="form-LITERATURE MONITORINGgroup">
-           <input type="password" formControlName="password" class="form-control" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-        </div>
-        </div>
-        <div class="form-LITERATURE MONITORINGgroup mt-3">
-            <button type="submit" class="btn btn-primary btn-block form-control">Log in</button>
-        </div>
-<!--         <div class=" form-LITERATURE MONITORINGgroup mt-3">
-            
-             <p class="pull-left text-center"><a href="#">Create an Account</a></p>
-            <a href="#" class="pull-right">Forgot Password?</a>
-        </div>         -->
-    </form>
+                <div class="login-logo text-center mb-3"> <img src="assets/logo-1.png" alt="brand logo"></div>
+                <h3 class="text-center mb-3">LITERATURE MONITORING</h3> 
+                <div class="form-group">
+                    <input type="text" formControlName="username" class="form-control col-md-10 offset-md-1" placeholder="User Name" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Username is required</div>
+                </div>
+                </div>
+                <div class="form-LITERATURE MONITORINGgroup">
+                    <input type="password" formControlName="password" class="form-control col-md-10 offset-md-1" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+                </div>
+                <div class="form-LITERATURE MONITORINGgroup mt-3">
+                    <button type="submit" class="btn btn-primary btn-block form-control col-md-3 offset-md-1" >Log in</button>
+                </div>
+                 <div class=" form-LITERATURE MONITORINGgroup mt-3 d-none">
+                    
+<!--                         <p class="pull-left text-center"><a href="#">Create an Account</a></p>
+                    <a href="#" class="pull-right">Forgot Password?</a> -->
+                </div>         
+            </form>
         </div>
         
 
-    </div>   
+    </div>
+   
 </div>
 </div>
