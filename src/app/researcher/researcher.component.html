@@ -82,7 +82,7 @@
                     <div class="article-title" >
                         <p class="mb-0">{{x.result_title}}</p>
                         <span class="pull-right icon-circle_a"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
-                        {{x.deleted}}
+                        
                     </div>
                     <div class="article-text">
                             <p class="mb-0">{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
@@ -92,7 +92,7 @@
                                         
                                         <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm">submitted for review</button>
                                         <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm">saved as draft</button>
-                                        <button type="button" (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
+                                        <button type="button"  *ngIf="x.status !=='submit for review' && x.status !=='saved as drafted' " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
 
                                 </div>                             
                             
