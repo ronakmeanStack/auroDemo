@@ -85,13 +85,13 @@
                         
                     </div>
                     <div class="article-text">
-                            <p class="mb-0">{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
-                                <div class="pull-right d-none">
+                            <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
+                                <div class="pull-right d-none pt-2">
                                   <!-- data-target="#myModal"  -->
-                                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal"  (click)="singleRecord(x)" >Full view</button>
+                                  <button type="button" class="btn btn-default btn-sm open-modals" data-toggle="modal"  (click)="singleRecord(x)" >Full view</button>
                                         
-                                        <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm">submitted for review</button>
-                                        <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm">saved as draft</button>
+                                        <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">submitted for review</button>
+                                        <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">saved as draft</button>
                                         <button type="button"  *ngIf="x.status !=='submit for review' && x.status !=='saved as drafted' " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
 
                                 </div>                             
@@ -167,15 +167,15 @@
   
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">CheckList</a>
+            <a class="nav-link active" href="#base-profile" role="tab" data-toggle="tab">CheckList</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Comments</a>
+            <a class="nav-link" href="#base-buzz" role="tab" data-toggle="tab">Comments</a>
           </li>
         </ul>
-        <form [formGroup]="articleform" (ngSubmit)="articleonSubmit()">
-        <div class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
-          <div role="tabpanel" class="tab-pane fadein active" id="profile">
+        <form [formGroup]="articleform" (ngSubmit)="articleonSubmit()"  class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
+        
+          <div role="tabpanel" class="tab-pane active" id="base-profile">
   
             <div class="row">
               <div class="col-md-4">
@@ -303,13 +303,13 @@
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#buzz" (click)="next()" >Next</button>
+                                                    <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
                                       </div>
-          <div role="tabpanel" class="tab-pane fade" id="buzz">
+          <div role="tabpanel" class="tab-pane" id="base-buzz">
               <input type="checkbox" id="1" name="rememberMe"  >
               <label for="1" class="checkbox"></label>  Interventional study<br><br>
   
@@ -402,7 +402,6 @@
              </div>
           </div>
         
-         </div>
        </form>
         </div>      
       </div>
@@ -430,15 +429,14 @@
   
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">CheckList</a>
+            <a class="nav-link active" href="#submited-profile" role="tab" data-toggle="tab">CheckList</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Comments</a>
+            <a class="nav-link" href="#submited-buzz" role="tab" data-toggle="tab">Comments</a>
           </li>
         </ul>
-        <form [formGroup]="articleform" (ngSubmit)="articleonSubmit()">
-        <div class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
-          <div role="tabpanel" class="tab-pane fadein active" id="profile">
+        <form [formGroup]="articleform" (ngSubmit)="articleonSubmit()" class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
+          <div role="tabpanel" class="tab-pane fadein active" id="submited-profile">
   
             <div class="row">
               <div class="col-md-4">
@@ -566,13 +564,13 @@
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#buzz" (click)="next()" >Next</button>
+                                                    <button type="button" class="btn btn-primary" href="#submited-buzz" (click)="('submited-buzz')" >Next</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
                                       </div>
-          <div role="tabpanel" class="tab-pane fade" id="buzz">
+          <div role="tabpanel" class="tab-pane fade" id="submited-buzz">
               <input type="checkbox" id="1" name="rememberMe"  >
               <label for="1" class="checkbox"></label>  Interventional study<br><br>
   
@@ -665,7 +663,6 @@
              </div>
           </div>
         
-         </div>
        </form>
         </div>      
       </div>
@@ -674,267 +671,6 @@
 
 
 
-<div class="modal" id="draftModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header  bg-white">
-           <h5 class="modal-title"><b>{{singleRecordData.result_title}} </b>
-  </h5>
-          <button type="button" class="close" (click)="closemodal()" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-    <strong>Author Information:</strong> {{singleRecordData.author}}<br><br>
-          <strong class="text-primary" style="font-size:18px;">Abstract</strong>
-         <!--  <p>{{singleRecordData.result_abstract}}</p> -->
-        <br>
-  
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">CheckList</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Comments</a>
-          </li>
-        </ul>
-        <form [formGroup]="articleform" (ngSubmit)="articleonSubmit()">
-        <div class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
-          <div role="tabpanel" class="tab-pane fadein active" id="profile">
-  
-            <div class="row">
-              <div class="col-md-4">
-            <label> Does Drugs Belongs to Aurobindo</label>
-              </div>
-              <div class="col-md-8">
-
-            <label class="switch">
-                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                <span class="slider round"></span>
-              </label>
-            </div>
-               </div>
-               <div class="row">
-                  <div class="col-md-3">
-                <label> Counter of authorization</label>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="form-group">
-                          <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="draftartData['contryauth']" name="contryauth" id="contryauth" >
-                        </div>
-                </div>
-                   </div>
-                   <label class="text-primary">Product</label>
-                   <div class="row">
-                      <div class="col-md-3">
-                    <label class="pl"> Publication Date</label>
-                      </div>
-                      <div class="col-md-3">
-                          <div class="form-group">
-                              <input type="text" class="form-control" formControlName="Publication_Date" [(ngModel)]="draftartData['Publication_Date']" name="Publication_Date" id="Publication_Date" >
-                            </div>
-                    </div>
-                       </div>
-                       <div class="row">
-                          <div class="col-md-3">
-                        <label class="pl"> Approval Date</label>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="form-group">
-                                  <input type="text" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date" >
-                                </div>
-                        </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-3">
-                            <label class="pl"> Withdrawn Date</label>
-                              </div>
-                              <div class="col-md-3">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date" >
-                                    </div>
-                            </div>
-                               </div>
-                               <label class="text-primary">Drug</label>
-                   <div class="row">
-                      <div class="col-md-3">
-                    <label class="pl"> Start Date</label>
-                      </div>
-                      <div class="col-md-3">
-                          <div class="form-group">
-                              <input type="text" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="draftartData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date"  >
-                            </div>
-                    </div>
-                       </div>
-                       <div class="row">
-                          <div class="col-md-3">
-                        <label class="pl"> Approval Date</label>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="form-group">
-                                  <input type="text" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="draftartData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date" >
-                                </div>
-                        </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-3">
-                            <label class="pl"> Withdrawn Date</label>
-                              </div>
-                              <div class="col-md-3">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="draftartData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date" >
-                                    </div>
-                            </div>
-                               </div>
-                               <div class="row">
-                                  <div class="col-md-3">
-                                <label class="pl"> Route of administration of Drug</label>
-                                  </div>
-                                  <div class="col-md-3">
-                                      <div class="form-group">
-                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="draftartData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug" >
-                                        </div>
-                                </div>
-                                   </div>
-                                   <div class="row">
-                                      <div class="col-md-3">
-                                    <label class="pl"> Formulation of Drug</label>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <div class="form-group">
-                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="draftartData['Formulation_of_Drug']" name="Formulation_of_Drug" id="Formulation_of_Drug" >
-                                            </div>
-                                    </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-3">
-                                        <label class="pl"> Brand drug mentioned?
-                                          </label>
-                                          </div>
-                                          <div class="col-md-3">
-                                              <label class="switch">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged"/>
-                                                  <span class="slider round"></span>
-                                                </label>
-                                        </div>
-                                           </div>
-                                           <label class="text-primary">Author Comments</label>
-                                           <div class="row">
-                                              <div class="col-md-12">
-                                                  <div class="form-group">
-                                                      <textarea class="form-control" rows="5" id="comment" formControlName="Author_Comments" [(ngModel)]="draftartData['Author_Comments']" name="Author_Comments" id="Author_Comments" ></textarea>
-                                                    </div>
-                                            </div>
-                                               </div>
-                                               
-                                                   <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#buzz" (click)="next()" >Next</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
-                                            
-                                                  </div>
-                                      </div>
-          <div role="tabpanel" class="tab-pane fade" id="buzz">
-              <input type="checkbox" id="1" name="rememberMe"  >
-              <label for="1" class="checkbox"></label>  Interventional study<br><br>
-  
-              <input type="checkbox" id="2" name="rememberMe"  >
-              <label for="2" class="checkbox"></label>  Non-Valid Case report with unidentifiable patient/unidentifiable report<br><br>
-  
-              <input type="checkbox" id="3" name="rememberMe"  >
-              <label for="3" class="checkbox"></label> Valid Case report found for data basing<br><br>
-  
-              <input type="checkbox" id="4" name="rememberMe"  >
-              <label for="4" class="checkbox"></label> Toxicology / in vitro study<br><br>
-  
-              <input type="checkbox" id="5" name="rememberMe"  >
-              <label for="5" class="checkbox"></label> Animal Study<br><br>
-  
-              <input type="checkbox" id="6" name="rememberMe"  >
-              <label for="6" class="checkbox"></label> Suspected substance or medicinal product missing<br><br>
-  
-              <input type="checkbox" id="7" name="rememberMe"  >
-              <label for="7" class="checkbox"></label> Suspected adverse reaction missing<br><br>
-  
-              <input type="checkbox" id="8" name="rememberMe"  >
-              <label for="8" class="checkbox"></label> Termination of pregnancy – no ADR information<br><br>
-  
-              <input type="checkbox" id="9" name="rememberMe"  >
-              <label for="9" class="checkbox"></label>   Pregnancy – no ADR<br><br>
-  
-              <input type="checkbox" id="10" name="rememberMe"  >
-              <label for="10" class="checkbox"></label> Paediatric  Or Elderly – no ADR<br><br>
-  
-              <input type="checkbox" id="11" name="rememberMe"  >
-              <label for="11" class="checkbox"></label> Overdose, Abuse , Off-label use , Misuse , Medication error , Occupational  
-              exposure – no ADR<br><br>
-  
-              <input type="checkbox" id="12" name="rememberMe"  >
-              <label for="12" class="checkbox"></label> Quality defect, Falsified medicines – no ADR<br><br>
-  
-              <input type="checkbox" id="13" name="rememberMe"  >
-              <label for="13" class="checkbox"></label>  Company holds a marketing authorisation but has never commercialised the      
-              medicinal product<br><br>
-  
-              <input type="checkbox" id="14" name="rememberMe"  >
-              <label for="14" class="checkbox"></label>  Potential PV case<br><br>
-  
-              <input type="checkbox" id="15" name="rememberMe"  >
-              <label for="15" class="checkbox"></label>  Safety data found for aggregate reports<br><br>
-  
-              <input type="checkbox" id="16" name="rememberMe"  >
-              <label for="16" class="checkbox"></label>  Safety data not found for Aurobindo products<br><br>
-  
-              <input type="checkbox" id="17" name="rememberMe"  >
-              <label for="17" class="checkbox"></label>  Suspect drug not belongs to Aurobindo products<br><br>
-  
-              <input type="checkbox" id="18" name="rememberMe"  >
-              <label for="18" class="checkbox"></label>  Drug used for treatment<br><br>
-  
-              <input type="checkbox" id="19" name="rememberMe"  >
-              <label for="19" class="checkbox"></label>  Brand drug mentioned<br><br>
-  
-              <input type="checkbox" id="20" name="rememberMe"  >
-              <label for="20" class="checkbox"></label>  No MA (Marketing Authorization) in the country of ADE occurrence<br><br>
-  
-              <input type="checkbox" id="21" name="rememberMe"  >
-              <label for="21" class="checkbox"></label>  No MA (Marketing Authorization) at the time of Publication<br><br>
-  
-              <input type="checkbox" id="22" name="rememberMe"  >
-              <label for="22" class="checkbox"></label>  No MA (Marketing Authorization) for formulation of suspect drug<br><br>
-  
-              <input type="checkbox" id="23" name="rememberMe"  >
-              <label for="23" class="checkbox"></label>  Therapy and/or event end dates prior to the grant of the approval in the country  of ADE occurrence<br><br>
-  
-              <input type="checkbox" id="24" name="rememberMe"  >
-              <label for="24" class="checkbox"></label>  Publication study<br><br>
-  
-              <input type="checkbox" id="25" name="rememberMe">
-              <label for="25" class="checkbox"></label>  No search found<br><br>
-  
-              <input type="checkbox" id="26" name="rememberMe"  >
-              <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
-              <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden>
-
-              <label for="27" class="checkbox"></label> Safety communication<br><br>
-              <div class="modal-footer">
-
-
-               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for review</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
-       
-             </div>
-          </div>
-        
-         </div>
-       </form>
-        </div>      
-      </div>
-    </div>
-  </div>
 
 
 
@@ -959,10 +695,10 @@
   
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">CheckList</a>
+            <a class="nav-link active" href="#draft-profile" role="tab" data-toggle="tab">CheckList</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Comments</a>
+            <a class="nav-link" href="#draft-buzz" role="tab" data-toggle="tab">Comments</a>
           </li>
         </ul>
          <div class="row">
@@ -971,9 +707,8 @@
                 
 
 
-<form [formGroup]="articleform" (ngSubmit)="articleonSubmit()">
-        <div class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
-          <div role="tabpanel" class="tab-pane fadein active" id="profile">
+<form [formGroup]="articleform" (ngSubmit)="articleonSubmit()" class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
+          <div role="tabpanel" class="tab-pane fadein active" id="draft-profile">
   
             <div class="row">
               <div class="col-md-4">
@@ -1101,13 +836,13 @@
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#buzz" (click)="next()" >Next</button>
+                                                    <button type="button" class="btn btn-primary" href="#draft-buzz" (click)="('draft-buzz')" >Next</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
                                       </div>
-          <div role="tabpanel" class="tab-pane fade" id="buzz">
+          <div role="tabpanel" class="tab-pane fade" id="draft-buzz">
               <input type="checkbox" id="1" name="rememberMe"  >
               <label for="1" class="checkbox"></label>  Interventional study<br><br>
   
@@ -1200,7 +935,6 @@
              </div>
           </div>
         
-         </div>
        </form>
 
 
