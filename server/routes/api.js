@@ -33,8 +33,8 @@ app.get('/getsrchresult',function(req,res,next){
 app.post('/reviewarticle',function(req,res,next){
   dashboard.savereview(req,res);
 })
-app.post('/test',function(req,res,next){
-  dashboard.test(req,res);
+app.post('/savedraft',function(req,res,next){
+  dashboard.savedraft(req,res);
 })
 app.post('/deleteart',function(req,res,next){
   dashboard.deleteart(req,res);

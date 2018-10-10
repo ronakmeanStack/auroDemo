@@ -1,9 +1,14 @@
+import 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
-import {Observable} from 'rxjs/Observable';
+//import {Observable} from 'rxjs/Observable';
+import { Observable } from "rxjs/Rx";
 import {Researcher} from '../model/result-research';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { map, flatMap } from "rxjs/operators";
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/operator/map';
 @Injectable()
 export class ResearchdataService {
   result: any;
@@ -27,11 +32,23 @@ export class ResearchdataService {
    
 }*/
 
-getUser() {
+/*getUser() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.get('/api/getsrchresult' ,{headers : headers, withCredentials: true})
       .map(res => res.json());
+  }*/
+  getsearchArt(): Observable<any> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    return Observable.interval(3000).pipe(flatMap(() => {
+        return this._http.get('/api/getsrchresult' ,{headers : headers, withCredentials: true})
+      .map(res => res.json());
+        }));
+
+    // return this._http.get('/api/getsrchresult' ,{headers : headers, withCredentials: true})
+    //   .map(res => res.json());
   }
 
 /*checkListData(obj): Observable<any>  {

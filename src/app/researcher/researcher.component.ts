@@ -17,6 +17,9 @@ declare var $: any;
 export class ResearcherComponent implements OnInit {
  data = [];
  //reviewdata=[];
+private reviewData: Object = {};
+private draftartData: Object = {};
+
  reviewdata :any ={};
  draftDataResponse: any;
  singleRecordData: any = [];
@@ -38,15 +41,59 @@ export class ResearcherComponent implements OnInit {
  private reseachViewData: Object = {};
  constructor(private researchdataService:ResearchdataService) { }
 
+
+draftForm = new FormGroup(
+    {
+      belongstatus : new FormControl(),
+      contryauth: new FormControl(),
+      Publication_Date: new FormControl(),
+      Product_Approval_Date: new FormControl(),
+      Product_Withdrawn_Date: new FormControl(),
+      drug_Start_Date: new FormControl(),
+      drugApproval_Date : new FormControl(),
+      drugWithdrawn_Date: new FormControl(),
+      administration_of_Drug: new FormControl(),
+      Formulation_of_Drug: new FormControl(),
+      Brand_drug_mentioned: new FormControl(),
+      Author_Comments: new FormControl(),
+    }
+  )
+
+reviewForm = new FormGroup(
+    {
+      belongstatus : new FormControl(),
+      contryauth: new FormControl(),
+      Publication_Date: new FormControl(),
+      Product_Approval_Date: new FormControl(),
+      Product_Withdrawn_Date: new FormControl(),
+      drug_Start_Date: new FormControl(),
+      drugApproval_Date : new FormControl(),
+      drugWithdrawn_Date: new FormControl(),
+      administration_of_Drug: new FormControl(),
+      Formulation_of_Drug: new FormControl(),
+      Brand_drug_mentioned: new FormControl(),
+      Author_Comments: new FormControl(),
+    }
+  )
+
+   
+
+
+
+
+
+
  ngOnInit() {
 
      this.formCreate();
      console.log("calling----")
        
-          this.researchdataService.getUser()
+          this.researchdataService.getsearchArt()
            .subscribe((res) => {
              this.data = res;
+             console.log("--data",this.data)
            });
+
        }
 
        formCreate() {
@@ -72,7 +119,9 @@ export class ResearcherComponent implements OnInit {
        }
 
 closemodal() {
- $('#myModal').hide();
+ $('#basemodal').hide();
+ $('#draftModal').hide();
+ $('#submitedModal').hide();
 }
 
        openfullmode(data){
@@ -86,9 +135,60 @@ closemodal() {
 
        }
 
-       singleRecord(id) {
-         this.articleform.patchValue({articleId: id});
-         this.singleRecordData = this.data[id];
+       singleRecord(data) {
+         this.articleform.patchValue({articleId: data.id});
+         this.singleRecordData = this.data[data.id];
+
+
+         console.log("-----data",data)
+         if(data.status==" " || data.status==null){
+           console.log("nothing");
+           $('#basemodal').show();
+
+         }
+         else if(data.status=="submit for review"){
+           console.log("submit for review")
+      $('#submitedModal').show();
+
+      this.reviewData['belongstatus']=data.belongstatus;
+      this.reviewData['contryauth']=data.contryauth;
+      this.reviewData['Publication_Date']=data.Publication_Date;
+      this.reviewData['Product_Approval_Date']=data.Product_Approval_Date;
+      this.reviewData['Product_Withdrawn_Date']=data.Product_Withdrawn_Date;
+      this.reviewData['drug_Start_Date']=data.drug_Start_Date;
+      this.reviewData['drugApproval_Date']=data.drugApproval_Date;
+      this.reviewData['drugWithdrawn_Date']=data.drugWithdrawn_Date;
+      this.reviewData['administration_of_Drug']=data.administration_of_Drug;
+      this.reviewData['Formulation_of_Drug']=data.Formulation_of_Drug;
+      this.reviewData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
+      this.reviewData['Author_Comments']=data.Author_Comments;
+
+
+
+
+         }
+         else if(data.status=="saved as drafted"){
+           console.log("saved as drafted")
+      $('#draftModal').show();
+      this.draftartData['belongstatus']=data.belongstatus;
+      this.draftartData['contryauth']=data.contryauth;
+      this.draftartData['Publication_Date']=data.Publication_Date;
+      this.draftartData['Product_Approval_Date']=data.Product_Approval_Date;
+      this.draftartData['Product_Withdrawn_Date']=data.Product_Withdrawn_Date;
+      this.draftartData['drug_Start_Date']=data.drug_Start_Date;
+      this.draftartData['drugApproval_Date']=data.drugApproval_Date;
+      this.draftartData['drugWithdrawn_Date']=data.drugWithdrawn_Date;
+      this.draftartData['administration_of_Drug']=data.administration_of_Drug;
+      this.draftartData['Formulation_of_Drug']=data.Formulation_of_Drug;
+      this.draftartData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
+      this.draftartData['Author_Comments']=data.Author_Comments;
+
+
+
+
+         }
+
+
        }
 
 
@@ -117,16 +217,21 @@ closemodal() {
      }
 
       articleonSubmit() {
-
-        this.reviewdata=this.articleform.value;
+      console.log("----",this.articleform.value)
+      this.reviewdata=this.articleform.value;
       // TODO: Use EventEmitter with form value
       this.researchdataService.sumbitreview(this.reviewdata)
       console.warn(this.articleform.value);
       this.articleform.reset();
+    }
+
+    articleondraft(){
+       console.log("----articleondraft",this.articleform.value)
     }
     deleteRecord(id){
       console.log("deleted id",id)
       this.researchdataService.removearticle(id);
       
     }
+
 }
