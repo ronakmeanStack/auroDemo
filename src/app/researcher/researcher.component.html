@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="row col-pd">
 
                 <div class="col-md-4">
@@ -12,8 +12,8 @@
                                     Weekly
                                 </div>
                             <div class="row card-bottom">
-                                <div class="col-md-6">Sept 23-Sept 30</div>
-                                <div class="col-md-6">PubMed</div>
+                                <div class="col-md-8">Sept 23-Sept 30</div>
+                                <div class="col-md-4">PubMed</div>
                             </div>
                         </div>
                     </div>
@@ -30,8 +30,8 @@
                                     Monthly
                                 </div>
                             <div class="row card-bottom">
-                                <div class="col-md-6">Aug 01- Aug 31</div>
-                                <div class="col-md-6">Springer</div>
+                                <div class="col-md-8">Aug 01- Aug 31</div>
+                                <div class="col-md-4">Springer</div>
                             </div>
                         </div>
                     </div>
@@ -47,8 +47,8 @@
                                     Custom
                                 </div>
                             <div class="row card-bottom">
-                                <div class="col-md-6">Aug 01-3 Oct</div>
-                                <div class="col-md-6">Springer</div>
+                                <div class="col-md-8">Aug 01- Oct 03</div>
+                                <div class="col-md-4">Springer</div>
                             </div>
                         </div>
                     </div>
@@ -60,21 +60,23 @@
 
 
 
-        <div class="col-md-1">
+        <!-- <div class="col-md-1">
             <div class="row arrow">
               <div class="co-12 angle-icon ">
                 <a><i class="fa fa-angle-right" aria-hidden="true"></i></a>
               </div>
             </div>
-      </div>
+      </div> -->
 
     </div>
 </div> 
-<div class="container p-0 mt-4">
-    <h5 class="mb-3">Abacavir Lamivundine...<span class="title-gray">Weekly(20-30sept)</span></h5>
-    <span class="pull-right icon-circle">
+<div class="container mt-4">
+    <div class="clearfix mt-1">
+      <h5 class="mt-2 mb-2">Abacavir Lamivundine...<span class="title-gray">Weekly(20-30sept)</span></h5>
+      <span class="icon-circle pos-block">
         <i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
-    <div class="row">
+    </div>
+    <div class="">
         <div class="scroll-area">
             <div class="scrollspy" >
                 <article class="article" *ngFor="let x of data; let i= index" >
@@ -88,10 +90,10 @@
                             <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
                                 <div class="pull-right d-none pt-2">
                                   <!-- data-target="#myModal"  -->
-                                  <button type="button" class="btn btn-default btn-sm open-modals" data-toggle="modal"  (click)="singleRecord(x)" >Full view</button>
+                                  <button type="button" class="btn btn-default btn-sm open-modals" data-toggle="modal" data-target="#basemodal" (click)="singleRecord(i)" >Full View</button>
                                         
-                                        <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">submitted for review</button>
-                                        <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">saved as draft</button>
+                                        <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">Submitted for Review</button>
+                                        <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">Saved as Draft</button>
                                         <button type="button"  *ngIf="x.status !=='submit for review' && x.status !=='saved as drafted' " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
 
                                 </div>                             
@@ -178,15 +180,20 @@
           <div role="tabpanel" class="tab-pane active" id="base-profile">
   
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-3">
 
-            <label class="switch">
+            <!-- <label class="switch">
                 <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                <span class="slider round"></span>
-              </label>
+                <div class="toggle-group"><label class="btn btn-primary toggle-on">On</label><label class="btn btn-default active toggle-off">Off</label><span class="toggle-handle btn btn-default"></span></div>
+              </label> -->
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
+                </label>
+              </div>
             </div>
                </div>
                <div class="row">
@@ -287,7 +294,7 @@
                                           </label>
                                           </div>
                                           <div class="col-md-3">
-                                              <label class="switch">
+                                              <label class="">
                                                   <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged"/>
                                                   <span class="slider round"></span>
                                                 </label>
@@ -303,8 +310,8 @@
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as draft</button>
+                                                    <!-- <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button> -->
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
@@ -395,8 +402,8 @@
               <div class="modal-footer">
 
 
-               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for review</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as draft</button>
+               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for Review</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as Draft</button>
                <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
        
              </div>
@@ -439,10 +446,10 @@
           <div role="tabpanel" class="tab-pane fadein active" id="submited-profile">
   
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-3">
 
             <label class="switch">
                 <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
@@ -564,8 +571,8 @@
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#submited-buzz" (click)="('submited-buzz')" >Next</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
+                                                    <!-- <button type="button" class="btn btn-primary" href="#submited-buzz" (click)="('submited-buzz')" >Next</button> -->
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
@@ -656,8 +663,8 @@
               <div class="modal-footer">
 
 
-               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for review</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
+               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for Review</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
                <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
        
              </div>
@@ -711,12 +718,12 @@
           <div role="tabpanel" class="tab-pane fadein active" id="draft-profile">
   
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-3">
 
-            <label class="switch">
+            <label class="">
                 <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
                 <span class="slider round"></span>
               </label>
@@ -836,8 +843,8 @@
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" href="#draft-buzz" (click)="('draft-buzz')" >Next</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
+                                                    <!-- <button type="button" class="btn btn-primary" href="#draft-buzz" (click)="('draft-buzz')" >Next</button> -->
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
@@ -928,8 +935,8 @@
               <div class="modal-footer">
 
 
-               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for review</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as draft</button>
+               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for Review</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
                <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
        
              </div>

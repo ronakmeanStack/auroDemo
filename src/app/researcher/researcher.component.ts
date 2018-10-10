@@ -33,6 +33,7 @@ private draftartData: Object = {};
  brandDrag: boolean;
  startDate: any;
  formulationDrug: any;
+ commentDiv: boolean;
  authorComment: any;
  administrationRoute: any;
  readonly:String;
@@ -135,7 +136,12 @@ closemodal() {
 
        }
 
-       singleRecord(data) {
+       singleRecord(id){
+         debugger;
+         this.singleRecordData = this.data[id];
+       }
+
+       singleDaata(data) {
          this.articleform.patchValue({articleId: data.id});
          this.singleRecordData = this.data[data.id];
 
