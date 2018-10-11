@@ -53,6 +53,7 @@ private draftartData: Object = {};
 
 draftForm = new FormGroup(
     {
+      id: new FormControl(),
       belongstatus : new FormControl(),
       contryauth: new FormControl(),
       Publication_Date: new FormControl(),
@@ -70,6 +71,7 @@ draftForm = new FormGroup(
 
 reviewForm = new FormGroup(
     {
+       id: new FormControl(),
       belongstatus : new FormControl(),
       contryauth: new FormControl(),
       Publication_Date: new FormControl(),
@@ -170,7 +172,7 @@ closemodal() {
          else if(data.status=="submit for review"){
            console.log("submit for review")
       $('#submitedModal').show();
-
+       this.reviewData['id']=data.id;
       this.reviewData['belongstatus']=data.belongstatus;
       this.reviewData['contryauth']=data.contryauth;
       this.reviewData['Publication_Date']=data.Publication_Date;
@@ -191,6 +193,7 @@ closemodal() {
          else if(data.status=="saved as drafted"){
            console.log("saved as drafted")
       $('#draftModal').show();
+      this.draftartData['id']=data.id;
       this.draftartData['belongstatus']=data.belongstatus;
       this.draftartData['contryauth']=data.contryauth;
       this.draftartData['Publication_Date']=data.Publication_Date;
