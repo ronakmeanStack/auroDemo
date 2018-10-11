@@ -195,7 +195,9 @@ closemodal() {
 
          console.log("----data----",data)
 
-      $('#basemodal').show();
+
+if(data.status=="saved as triage"){
+$('#triagemodal').show()
       this.draftartData['id']=data.id;
       this.draftartData['belongstatus']=data.belongstatus;
       this.draftartData['contryauth']=data.contryauth;
@@ -209,8 +211,30 @@ closemodal() {
       this.draftartData['Formulation_of_Drug']=data.Formulation_of_Drug;
       this.draftartData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
       this.draftartData['Author_Comments']=data.Author_Comments;
+}
+else{
+
+
+ $('#basemodal').show();
+      this.draftartData['id']=data.id;
+      this.draftartData['belongstatus']=data.belongstatus;
+      this.draftartData['contryauth']=data.contryauth;
+      this.draftartData['Publication_Date']=data.Publication_Date;
+      this.draftartData['Product_Approval_Date']=data.Product_Approval_Date;
+      this.draftartData['Product_Withdrawn_Date']=data.Product_Withdrawn_Date;
+      this.draftartData['drug_Start_Date']=data.drug_Start_Date;
+      this.draftartData['drugApproval_Date']=data.drugApproval_Date;
+      this.draftartData['drugWithdrawn_Date']=data.drugWithdrawn_Date;
+      this.draftartData['administration_of_Drug']=data.administration_of_Drug;
+      this.draftartData['Formulation_of_Drug']=data.Formulation_of_Drug;
+      this.draftartData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
+      this.draftartData['Author_Comments']=data.Author_Comments;
+
+}
+
+     
       
-           $('#basemodal').show();
+          // $('#basemodal').show();
 
       
       /*   else if(data.status=="submit for review"){
