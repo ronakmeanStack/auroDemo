@@ -80,7 +80,7 @@ padding: 10px 35px;
  color: dodgerblue;
  font-weight: bold;
  font-size: 19px;
- width: 95%;
+ width: 100%;
  position: relative;
 }
 .article-text{
@@ -180,12 +180,12 @@ background-color: #000 !important;
   box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
   cursor: pointer;
 }
-.switch-input {
+/*.switch-input {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
-}
+}*/
 .switch-label {
   position: relative;
   display: block;
@@ -231,10 +231,10 @@ background-color: #000 !important;
 }
 .switch-handle {
   position: absolute;
-  top: 4px;
+  top: 2px;
   left: 4px;
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
   background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
   border-radius: 100%;
@@ -254,7 +254,7 @@ background-color: #000 !important;
   box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
 }
 .switch-input:checked ~ .switch-handle {
-  left: 74px;
+  left: 52px;
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
 }
  
@@ -412,16 +412,20 @@ h5.mt-2.mb-2 {
     padding-left: 24px;
 }
 .switch {
-  width: 58px;
-  height: 34px;
+  width: 86px;
+  height: 32px;
   position: relative;
   overflow: hidden;
   border: 1px solid transparent;
   background-image: none;
   background-color: transparent;
+  padding: 0;
 }
 .switch input {
   position: absolute;
   left: -99999px;
   top: -9999px;
+}
+#basemodal form.tab-content #base-profile > .row:nth-child(3) {
+  display: none;
 }

@@ -32,14 +32,14 @@ body {
 	width: 120px;
 }
 ._toggle{
-	border: .18rem solid rgb(70, 67, 67);
+	border: .15rem solid rgb(70, 67, 67);
 	background: transparent;
 	border-left: 0;
 	border-right: 0;
 	cursor: pointer;
-	height: 1.5rem;
+	height: 1.2rem;
 	position: relative;
-	width: 1.8rem;
+	width: 1.6rem;
 	outline-style: none;
 	left: 10px;
 	top: -5px;
@@ -140,4 +140,7 @@ body {
 #sidebar ul li a:focus {
     color: #fff;
 	outline-style: none;
+}
+.navbar-right .media .media-heading, .navbar-right .media small {
+  text-transform: capitalize;
 }

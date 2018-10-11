@@ -1,3 +1,475 @@
-<p>
-  user works!
-</p>
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+ <p style="font-size: 20px; color: white">Loading...</p>
+  
+</ngx-spinner>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row col-pd">
+
+                <div class="col-md-4">
+                    <div class="card card-1">
+                        <div class="card-body">
+                            <h2 class="card-title">{{reviewdataValue}}</h2>
+                            <h4 class="card-text">For Review</h4>
+                            <div class="card-text-sub">
+                                    Weekly
+                                </div>
+                            <div class="row card-bottom">
+                                <div class="col-md-8">08 - 13 OCT</div>
+                                <div class="col-md-4">PubMed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- <div class="col-md-4">
+                    <div class="card card-2">
+                        <div class="card-body">
+                            <h2 class="card-title">78 </h2>
+                            <h4 class="card-text">Deanol Ascorbic Acid Magnesium...</h4>
+                            <div class="card-text-sub">
+                                    Monthly
+                                </div>
+                            <div class="row card-bottom">
+                                <div class="col-md-8">Aug 01- Aug 31</div>
+                                <div class="col-md-4">Springer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card card-3">
+                        <div class="card-body">
+                            <h2 class="card-title">68 </h2>
+                            <h4 class="card-text">Amiloride And Hydrochlorothiazide</h4>
+                            <div class="card-text-sub">
+                                    Custom
+                                </div>
+                            <div class="row card-bottom">
+                                <div class="col-md-8">Aug 01- Oct 03</div>
+                                <div class="col-md-4">Springer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+
+
+
+
+        <!-- <div class="col-md-1">
+            <div class="row arrow">
+              <div class="co-12 angle-icon ">
+                <a><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+      </div> -->
+
+    </div>
+</div> 
+<div class="container mt-4">
+    <div class="clearfix pt-2 pb-2">
+      <!-- <h5 class="mt-2 mb-2">Abacavir Lamivundine...<span class="title-gray">Weekly(20-30sept)</span></h5> -->
+      <!-- <span class="icon-circle pos-block">
+        <i class="fa fa-ellipsis-v" aria-hidden="true"></i></span> -->
+    </div>
+    <div class="">
+        <div class="scroll-area">
+            <div class="scrollspy" >
+                <article class="article" *ngFor="let x of data; let i= index" >
+                   <span *ngIf="x.deleted==NULL || x.deleted=='no' || x.deleted==' '"> 
+                    <div class="article-title" >
+                        <p class="mb-0">{{x.result_title}}</p>
+                       <!--  <span class="pull-right icon-circle_a"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span> -->
+                        
+                    </div>
+                    <div class="article-text">
+                            <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
+                                <div class="pull-right d-none pt-2">
+                                  <!-- data-target="#myModal"  -->
+                                  <button type="button" class="btn btn-default btn-sm open-modals"  data-target="#basemodal" (click)="singleDaata(x)" >Full View</button>
+                                        
+                                        <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">Submitted for Review</button>
+                                        <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">Saved as Draft</button>
+                                         <button type="button"  *ngIf="x.status !=='submit for review' && x.status !=='saved as drafted' " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Sumitted for triage</button>
+                                        
+
+                                </div>                             
+                            
+                        </div>
+                      </span>
+
+                </article>
+                  
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="container mt-2">
+    <div class="row pull-right">
+        <div class ="article-icon" >
+            <a href="#"><i class="fa fa-download"  style="color: black;"></i></a>
+            <a href="#" ><i class="fa fa-file-word-o" aria-hidden="true" style="color: blue"></i></a>
+            <a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true" style="color:red"></i></a>
+            <a href="#"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- modal -->
+
+ <!-- <div class="modal inmodal rounded-corners "   id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal-dialog modal-lg rounded-corners " style="width:100%">
+    <div class="modal-content animated fadeIn rounded-corners " style="background-color: rgb(239, 236, 236);">
+      <div class="rounded-corners" style="background-color: rgb(239, 236, 236); text-align:center;">
+      </div>
+      <div class="panel panel-default">
+        <button type="button" class="close" data-dismiss="modal" (click)="closemodal($event)" >&times;</button>
+        <div class="panel-body" >
+          <p>hello</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>  -->
+
+
+
+
+
+<!-- end modal -->
+
+
+<!-- my modal -->
+<div class="modal" id="basemodal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header  bg-white">
+           <h5 class="modal-title"><b>{{modaltitle}} </b>
+  </h5>
+          <button type="button" class="close" (click)="closemodal()" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+    <strong>Author Information:</strong> {{authordata}}<br><br>
+          <strong class="text-primary" style="font-size:18px;">Abstract</strong>
+          <p>{{abstractdata}}</p>
+        <br>
+  
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" href="#base-profile" role="tab" data-toggle="tab">CheckList</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#base-buzz" role="tab" data-toggle="tab">Comments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#base-arti-req" role="tab" data-toggle="tab">Full Article Request</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#base-tran" role="tab" data-toggle="tab">Translation Request</a>
+          </li>
+        </ul>
+        <form [formGroup]="draftForm"   class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
+        
+          <div role="tabpanel" class="tab-pane active" id="base-profile">
+  
+            <div class="row">
+              <div class="col-md-3">
+            <label> Does Drugs Belongs to Aurobindo</label>
+              </div>
+              <div class="col-md-3">
+
+            <label class="">
+                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="belongstatus" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
+                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                <span class="switch-handle"></span> -->
+              </label>
+              <!-- <div class="checkbox">
+                <label>
+                  <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
+                </label>
+              </div> -->
+            </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-3">
+                <label> Counter of authorization</label>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="draftartData['contryauth']" name="contryauth" id="contryauth" >
+                        </div>
+                </div>
+                   </div>
+
+
+ <div class="row">
+                  <div class="col-md-3">
+                <label> id</label>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <input type="text" class="form-control" formControlName="id" [(ngModel)]="draftartData['id']" name="id" id="id" >
+                        </div>
+                </div>
+                   </div>
+
+
+
+                   <label class="text-primary">Product</label>
+                   <div class="row">
+                      <div class="col-md-3">
+                    <label class="pl"> Publication Date</label>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="form-group">
+                              <input type="date" class="form-control" formControlName="Publication_Date" [(ngModel)]="draftartData['Publication_Date']" name="Publication_Date" id="Publication_Date">
+                            </div>
+                    </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-md-3">
+                        <label class="pl"> Approval Date</label>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="form-group">
+                                  <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date">
+                                </div>
+                        </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-3">
+                            <label class="pl"> Withdrawn Date</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date">
+                                    </div>
+                            </div>
+                               </div>
+                               <label class="text-primary">Drug</label>
+                   <div class="row">
+                      <div class="col-md-3">
+                    <label class="pl"> Start Date</label>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="form-group">
+                              <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="draftartData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date" >
+                            </div>
+                    </div>
+                       </div>
+                       <div class="row">
+                          <div class="col-md-3">
+                        <label class="pl"> Approval Date</label>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="form-group">
+                                  <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="draftartData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date">
+                                </div>
+                        </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-3">
+                            <label class="pl"> Withdrawn Date</label>
+                              </div>
+                              <div class="col-md-3">
+                                  <div class="form-group">
+                                      <input type="date" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="draftartData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date">
+                                    </div>
+                            </div>
+                               </div>
+                               <div class="row">
+                                  <div class="col-md-3">
+                                <label class="pl"> Route of administration of Drug</label>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <div class="form-group">
+                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="draftartData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug">
+                                        </div>
+                                </div>
+                                   </div>
+                                   <div class="row">
+                                      <div class="col-md-3">
+                                    <label class="pl"> Formulation of Drug</label>
+                                      </div>
+                                      <div class="col-md-3">
+                                          <div class="form-group">
+                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="draftartData['Formulation_of_Drug']" name="Formulation_of_Drug" id="Formulation_of_Drug">
+                                            </div>
+                                    </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3">
+                                        <label class="pl"> Brand drug mentioned?
+                                          </label>
+                                          </div>
+                                          <div class="col-md-3">
+                                              <label class="">
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                                                  <span class="switch-handle"></span> -->
+                                                </label>
+                                        </div>
+                                           </div>
+                                           <label class="text-primary">Author Comments</label>
+                                           <div class="row">
+                                              <div class="col-md-12">
+                                                  <div class="form-group">
+                                                      <textarea class="form-control" rows="5" formControlName="Author_Comments" [(ngModel)]="draftartData['Author_Comments']" name="Author_Comments" id="Author_Comments"></textarea>
+                                                    </div>
+                                            </div>
+                                               </div>
+                                               
+                                                   <div class="modal-footer">
+                                                    <!-- <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button> -->
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
+                                            
+                                                  </div>
+                                      </div>
+          <div role="tabpanel" class="tab-pane" id="base-buzz">
+              <input type="checkbox" id="1" name="rememberMe"  >
+              <label for="1" class="checkbox"></label>  Interventional study<br><br>
+  
+              <input type="checkbox" id="2" name="rememberMe"  >
+              <label for="2" class="checkbox"></label>  Non-Valid Case report with unidentifiable patient/unidentifiable report<br><br>
+  
+              <input type="checkbox" id="3" name="rememberMe"  >
+              <label for="3" class="checkbox"></label> Valid Case report found for data basing<br><br>
+  
+              <input type="checkbox" id="4" name="rememberMe"  >
+              <label for="4" class="checkbox"></label> Toxicology / in vitro study<br><br>
+  
+              <input type="checkbox" id="5" name="rememberMe"  >
+              <label for="5" class="checkbox"></label> Animal Study<br><br>
+  
+              <input type="checkbox" id="6" name="rememberMe"  >
+              <label for="6" class="checkbox"></label> Suspected substance or medicinal product missing<br><br>
+  
+              <input type="checkbox" id="7" name="rememberMe"  >
+              <label for="7" class="checkbox"></label> Suspected adverse reaction missing<br><br>
+  
+              <input type="checkbox" id="8" name="rememberMe"  >
+              <label for="8" class="checkbox"></label> Termination of pregnancy – no ADR information<br><br>
+  
+              <input type="checkbox" id="9" name="rememberMe"  >
+              <label for="9" class="checkbox"></label>   Pregnancy – no ADR<br><br>
+  
+              <input type="checkbox" id="10" name="rememberMe"  >
+              <label for="10" class="checkbox"></label> Paediatric  Or Elderly – no ADR<br><br>
+  
+              <input type="checkbox" id="11" name="rememberMe"  >
+              <label for="11" class="checkbox"></label> Overdose, Abuse , Off-label use , Misuse , Medication error , Occupational  
+              exposure – no ADR<br><br>
+  
+              <input type="checkbox" id="12" name="rememberMe"  >
+              <label for="12" class="checkbox"></label> Quality defect, Falsified medicines – no ADR<br><br>
+  
+              <input type="checkbox" id="13" name="rememberMe"  >
+              <label for="13" class="checkbox"></label>  Company holds a marketing authorisation but has never commercialised the      
+              medicinal product<br><br>
+  
+              <input type="checkbox" id="14" name="rememberMe"  >
+              <label for="14" class="checkbox"></label>  Potential PV case<br><br>
+  
+              <input type="checkbox" id="15" name="rememberMe"  >
+              <label for="15" class="checkbox"></label>  Safety data found for aggregate reports<br><br>
+  
+              <input type="checkbox" id="16" name="rememberMe"  >
+              <label for="16" class="checkbox"></label>  Safety data not found for Aurobindo products<br><br>
+  
+              <input type="checkbox" id="17" name="rememberMe"  >
+              <label for="17" class="checkbox"></label>  Suspect drug not belongs to Aurobindo products<br><br>
+  
+              <input type="checkbox" id="18" name="rememberMe"  >
+              <label for="18" class="checkbox"></label>  Drug used for treatment<br><br>
+  
+              <input type="checkbox" id="19" name="rememberMe"  >
+              <label for="19" class="checkbox"></label>  Brand drug mentioned<br><br>
+  
+              <input type="checkbox" id="20" name="rememberMe"  >
+              <label for="20" class="checkbox"></label>  No MA (Marketing Authorization) in the country of ADE occurrence<br><br>
+  
+              <input type="checkbox" id="21" name="rememberMe"  >
+              <label for="21" class="checkbox"></label>  No MA (Marketing Authorization) at the time of Publication<br><br>
+  
+              <input type="checkbox" id="22" name="rememberMe"  >
+              <label for="22" class="checkbox"></label>  No MA (Marketing Authorization) for formulation of suspect drug<br><br>
+  
+              <input type="checkbox" id="23" name="rememberMe"  >
+              <label for="23" class="checkbox"></label>  Therapy and/or event end dates prior to the grant of the approval in the country  of ADE occurrence<br><br>
+  
+              <input type="checkbox" id="24" name="rememberMe"  >
+              <label for="24" class="checkbox"></label>  Publication study<br><br>
+  
+              <input type="checkbox" id="25" name="rememberMe">
+              <label for="25" class="checkbox"></label>  No search found<br><br>
+  
+              <input type="checkbox" id="26" name="rememberMe"  >
+              <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
+              <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden>
+
+              <label for="27" class="checkbox"></label> Safety communication<br><br>
+              <div class="modal-footer">
+
+
+               <button type="button" class="btn btn-primary" (click)="articleontriage(draftartData)" data-dismiss="modal">Submit for Triage</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
+       
+             </div>
+          </div>
+          <div role="tabpanel" class="tab-pane text-center" id="base-arti-req">
+          	<strong>Work in Progress </strong>
+          </div>
+          <div role="tabpanel" class="tab-pane text-center" id="base-tran">
+          	<strong>Work in Progress </strong>
+          </div>
+        
+       </form>
+        </div>      
+      </div>
+    </div>
+  </div>
+
+<!-- end -->
+
+  <div class="alertmodal " id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <p>Do you want to remove the article.?</p>
+      </div>
+      <div class="modal-body">
+        
+      <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Agree</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Disagree</button>
+      </div>
+    </div>
+  </div>
+</div>

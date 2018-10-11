@@ -26,7 +26,7 @@ export const appRoute: Routes = [
         loadChildren: 'src/app/admin/admin.module#AdminModule'
       },
       {
-        path: 'user',
+        path: 'reviewer',
         loadChildren: 'src/app/user/user.module#UserModule'
       },
        {

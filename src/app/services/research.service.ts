@@ -32,13 +32,13 @@ export class ResearchdataService {
    
 }*/
 
-/*getUser() {
+getsearchArt() {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.get('/api/getsrchresult' ,{headers : headers, withCredentials: true})
       .map(res => res.json());
-  }*/
-  getsearchArt(): Observable<any> {
+  }
+ /* getsearchArt(): Observable<any> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -49,11 +49,13 @@ export class ResearchdataService {
 
     // return this._http.get('/api/getsrchresult' ,{headers : headers, withCredentials: true})
     //   .map(res => res.json());
-  }
+  }*/
 
-/*checkListData(obj): Observable<any>  {
- return this.httpClient.post('/api/getsrchresult', obj);
- }*/
+checkListData(obj): Observable<any>  {
+ return this.httpClient.post('/api/savedraft', obj);
+ }
+
+
 /*removearticle(id){
   console.log("---",id);
   return this.httpClient.post('/api/deleteart',id);
@@ -73,7 +75,45 @@ removearticle(id) {
       })
       .subscribe((res:any) => console.log(res));
   }
+ sumbitdraft(data) {
+    const headers = new Headers();
+    var data = data;
+    console.log('sumbitdraft----service ' + JSON.stringify(data));
+    headers.append('Content-Type', 'application/json');
+    return this._http
+      .post('/api/savedraft', JSON.stringify(data), {
+        headers: headers,
+        withCredentials: true
+      })
+      .subscribe(res => res.json);
+  }
 
 
+sumbitdraftbyre(data) {
+    const headers = new Headers();
+    var data = data;
+    console.log('sumbitdraft----service ' + JSON.stringify(data));
+    headers.append('Content-Type', 'application/json');
+    return this._http
+      .post('/api/savedraftres', JSON.stringify(data), {
+        headers: headers,
+        withCredentials: true
+      })
+      .subscribe(res => res.json);
+  }
+
+  
+  sumbitdtriage(data) {
+    const headers = new Headers();
+    var data = data;
+    console.log('sumbitdraft----service ' + JSON.stringify(data));
+    headers.append('Content-Type', 'application/json');
+    return this._http
+      .post('/api/savedtriage', JSON.stringify(data), {
+        headers: headers,
+        withCredentials: true
+      })
+      .subscribe(res => res.json);
+  }
 
 }

@@ -40,4 +40,11 @@ app.post('/deleteart',function(req,res,next){
   dashboard.deleteart(req,res);
 })
 
+app.post('/savedraftres',function(req,res,next){
+  dashboard.savedraftByre(req,res);
+})
+app.post('/savedtriage',function(req,res,next){
+  dashboard.savedtriage(req,res);
+})
+
 module.exports = app;

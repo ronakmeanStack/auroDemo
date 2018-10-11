@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           }
           if (this.f.username.value == 'ronak@aurobindo.com' && this.f.password.value == 'ronak@123') {
             this.router.navigate(['/app/reviewer']);
-            localStorage.setItem('role', 'Admin');
+            localStorage.setItem('role', 'reviewer');
             localStorage.setItem('user', 'Ronak');
           } 
 

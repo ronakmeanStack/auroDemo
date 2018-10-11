@@ -185,8 +185,51 @@ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err
  
  savedraft:function(req,res){
     data=req.body;
-    console.log("----hitedSSSS----save draft",data)
-    var artId=data.articleId;
+    console.log("----new----save draft",data)
+    var artId=data.id;
+    var artdata={
+    belongstatus:data.belongstatus,
+    contryauth:data.contryauth,
+    Publication_Date:data.Publication_Date,
+    Product_Approval_Date:data.Product_Approval_Date,
+    Product_Withdrawn_Date:data.Product_Withdrawn_Date,
+    drug_Start_Date:data.drug_Start_Date,
+    drugApproval_Date:data.drugApproval_Date,
+    drugWithdrawn_Date:data.drugWithdrawn_Date,
+    administration_of_Drug:data.administration_of_Drug,
+    Formulation_of_Drug:data.Formulation_of_Drug,
+    Brand_drug_mentioned:data.Brand_drug_mentioned,
+    Author_Comments:data.Author_Comments,
+   /* status:"saved as drafted"*/
+}
+
+ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err,result)=>{
+
+      if(err){
+        console.log("getting error",err)
+        res.json({
+          status:400,
+          message:err
+        })
+      }
+
+      else{
+        console.log("not error")
+        res.json({
+          status:200,
+          message:result
+        })
+      }
+
+    })
+
+  },
+
+
+  savedraftByre:function(req,res){
+    data=req.body;
+    console.log("----new----save draft",data)
+    var artId=data.id;
     var artdata={
     belongstatus:data.belongstatus,
     contryauth:data.contryauth,
@@ -203,7 +246,48 @@ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err
     status:"saved as drafted"
 }
 
-connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err,result)=>{
+ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err,result)=>{
+
+      if(err){
+        console.log("getting error",err)
+        res.json({
+          status:400,
+          message:err
+        })
+      }
+
+      else{
+        console.log("not error")
+        res.json({
+          status:200,
+          message:result
+        })
+      }
+
+    })
+
+  },
+  savedtriage:function(req,res){
+    data=req.body;
+    console.log("----new----save draft",data)
+    var artId=data.id;
+    var artdata={
+    belongstatus:data.belongstatus,
+    contryauth:data.contryauth,
+    Publication_Date:data.Publication_Date,
+    Product_Approval_Date:data.Product_Approval_Date,
+    Product_Withdrawn_Date:data.Product_Withdrawn_Date,
+    drug_Start_Date:data.drug_Start_Date,
+    drugApproval_Date:data.drugApproval_Date,
+    drugWithdrawn_Date:data.drugWithdrawn_Date,
+    administration_of_Drug:data.administration_of_Drug,
+    Formulation_of_Drug:data.Formulation_of_Drug,
+    Brand_drug_mentioned:data.Brand_drug_mentioned,
+    Author_Comments:data.Author_Comments,
+    status:"saved as triage"
+}
+
+ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err,result)=>{
 
       if(err){
         console.log("getting error",err)

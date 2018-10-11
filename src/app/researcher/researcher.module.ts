@@ -5,8 +5,10 @@ import { RouterModule } from '@angular/router';
 import { researcherRoute } from './researcher-routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(researcherRoute),ReactiveFormsModule,FormsModule],
+  imports: [CommonModule, NgxSpinnerModule , RouterModule.forChild(researcherRoute),ReactiveFormsModule,FormsModule],
   declarations: [ResearcherComponent]
 })
 export class ResearcherModule {}

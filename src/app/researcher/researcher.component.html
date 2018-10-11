@@ -1,3 +1,11 @@
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple">
+ <p style="font-size: 20px; color: white">Loading...</p>
+  
+</ngx-spinner>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
@@ -12,7 +20,7 @@
                                     Weekly
                                 </div>
                             <div class="row card-bottom">
-                                <div class="col-md-8">Sept 23-Sept 30</div>
+                                <div class="col-md-8">01 - 05 OCT</div>
                                 <div class="col-md-4">PubMed</div>
                             </div>
                         </div>
@@ -30,7 +38,7 @@
                                     Monthly
                                 </div>
                             <div class="row card-bottom">
-                                <div class="col-md-8">Aug 01- Aug 31</div>
+                                <div class="col-md-8">01- 31 AUG</div>
                                 <div class="col-md-4">Springer</div>
                             </div>
                         </div>
@@ -83,14 +91,14 @@
                    <span *ngIf="x.deleted==NULL || x.deleted=='no' || x.deleted==' '"> 
                     <div class="article-title" >
                         <p class="mb-0">{{x.result_title}}</p>
-                        <span class="pull-right icon-circle_a"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                        <!-- <span class="pull-right icon-circle_a"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span> -->
                         
                     </div>
                     <div class="article-text">
                             <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
                                 <div class="pull-right d-none pt-2">
                                   <!-- data-target="#myModal"  -->
-                                  <button type="button" class="btn btn-default btn-sm open-modals" data-toggle="modal" data-target="#basemodal" (click)="singleRecord(i)" >Full View</button>
+                                  <button type="button" class="btn btn-default btn-sm open-modals" data-target="#basemodal" (click)="singleDaata(x)" >Full View</button>
                                         
                                         <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">Submitted for Review</button>
                                         <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">Saved as Draft</button>
@@ -155,16 +163,16 @@
       
         <!-- Modal Header -->
         <div class="modal-header  bg-white">
-           <h5 class="modal-title"><b>{{singleRecordData.result_title}} </b>
+           <h5 class="modal-title"><b>{{modaltitle}} </b>
   </h5>
           <button type="button" class="close" (click)="closemodal()" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-    <strong>Author Information:</strong> {{singleRecordData.author}}<br><br>
+    <strong>Author Information:</strong> {{authordata}}<br><br>
           <strong class="text-primary" style="font-size:18px;">Abstract</strong>
-          <p>{{singleRecordData.result_abstract}}</p>
+          <p>{{abstractdata}}</p>
         <br>
   
         <ul class="nav nav-tabs" role="tablist">
@@ -183,24 +191,25 @@
               <div class="col-md-3">
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
 
-            <!-- <label class="switch">
-                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                <div class="toggle-group"><label class="btn btn-primary toggle-on">On</label><label class="btn btn-default active toggle-off">Off</label><span class="toggle-handle btn btn-default"></span></div>
-              </label> -->
-              <div class="checkbox">
+            <label class="">
+                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs" class="switch-input">
+                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                <span class="switch-handle"></span> -->
+              </label>
+              <!-- <div class="checkbox">
                 <label>
                   <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
                 </label>
-              </div>
+              </div> -->
             </div>
                </div>
                <div class="row">
                   <div class="col-md-3">
                 <label> Counter of authorization</label>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                       <div class="form-group">
                           <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="counterAuthorization">
                         </div>
@@ -211,7 +220,7 @@
                       <div class="col-md-3">
                     <label class="pl"> Publication Date</label>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           <div class="form-group">
                               <input type="date" class="form-control" formControlName="Publication_Date" [(ngModel)]="publicationDate">
                             </div>
@@ -221,7 +230,7 @@
                           <div class="col-md-3">
                         <label class="pl"> Approval Date</label>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                               <div class="form-group">
                                   <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="approvalDate">
                                 </div>
@@ -231,7 +240,7 @@
                               <div class="col-md-3">
                             <label class="pl"> Withdrawn Date</label>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                       <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="withdrawDate">
                                     </div>
@@ -242,7 +251,7 @@
                       <div class="col-md-3">
                     <label class="pl"> Start Date</label>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           <div class="form-group">
                               <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="startDate" >
                             </div>
@@ -252,7 +261,7 @@
                           <div class="col-md-3">
                         <label class="pl"> Approval Date</label>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                               <div class="form-group">
                                   <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="drugApprovalDate">
                                 </div>
@@ -262,7 +271,7 @@
                               <div class="col-md-3">
                             <label class="pl"> Withdrawn Date</label>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                       <input type="date" class="form-control" formControlName="drugWithdrawn_Date"  [(ngModel)]="drugWithdrawCode">
                                     </div>
@@ -272,7 +281,7 @@
                                   <div class="col-md-3">
                                 <label class="pl"> Route of administration of Drug</label>
                                   </div>
-                                  <div class="col-md-3">
+                                  <div class="col-md-4">
                                       <div class="form-group">
                                           <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="administrationRoute">
                                         </div>
@@ -282,7 +291,7 @@
                                       <div class="col-md-3">
                                     <label class="pl"> Formulation of Drug</label>
                                       </div>
-                                      <div class="col-md-3">
+                                      <div class="col-md-4">
                                           <div class="form-group">
                                               <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="formulationDrug">
                                             </div>
@@ -293,10 +302,11 @@
                                         <label class="pl"> Brand drug mentioned?
                                           </label>
                                           </div>
-                                          <div class="col-md-3">
+                                          <div class="col-md-4">
                                               <label class="">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged"/>
-                                                  <span class="slider round"></span>
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                                                  <span class="switch-handle"></span> -->
                                                 </label>
                                         </div>
                                            </div>
@@ -422,16 +432,16 @@
       
         <!-- Modal Header -->
         <div class="modal-header  bg-white">
-           <h5 class="modal-title"><b>{{singleRecordData.result_title}} </b>
+           <h5 class="modal-title"><b>{{modaltitle}} </b>
   </h5>
           <button type="button" class="close" (click)="closemodal()" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
-        <div class="modal-body">
-    <strong>Author Information:</strong> {{singleRecordData.author}}<br><br>
+         <div class="modal-body">
+    <strong>Author Information:</strong> {{authordata}}<br><br>
           <strong class="text-primary" style="font-size:18px;">Abstract</strong>
-         <!--  <p>{{singleRecordData.result_abstract}}</p> -->
+          <p>{{abstractdata}}</p>
         <br>
   
         <ul class="nav nav-tabs" role="tablist">
@@ -449,11 +459,12 @@
               <div class="col-md-3">
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
 
-            <label class="switch">
-                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                <span class="slider round"></span>
+            <label class="">
+                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs" class="switch-input">
+                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                <span class="switch-handle"></span> -->
               </label>
             </div>
                </div>
@@ -461,7 +472,7 @@
                   <div class="col-md-3">
                 <label> Counter of authorization</label>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-4">
                       <div class="form-group">
                           <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="reviewData['contryauth']" name="contryauth" id="contryauth" readonly>
                         </div>
@@ -472,7 +483,7 @@
                       <div class="col-md-3">
                     <label class="pl"> Publication Date</label>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           <div class="form-group">
                               <input type="text" class="form-control" formControlName="Publication_Date" [(ngModel)]="reviewData['Publication_Date']" name="Publication_Date" id="Publication_Date" readonly>
                             </div>
@@ -482,7 +493,7 @@
                           <div class="col-md-3">
                         <label class="pl"> Approval Date</label>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                               <div class="form-group">
                                   <input type="text" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="reviewData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date" readonly>
                                 </div>
@@ -492,7 +503,7 @@
                               <div class="col-md-3">
                             <label class="pl"> Withdrawn Date</label>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                       <input type="text" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="reviewData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date" readonly>
                                     </div>
@@ -503,7 +514,7 @@
                       <div class="col-md-3">
                     <label class="pl"> Start Date</label>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           <div class="form-group">
                               <input type="text" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="reviewData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date" readonly >
                             </div>
@@ -513,7 +524,7 @@
                           <div class="col-md-3">
                         <label class="pl"> Approval Date</label>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                               <div class="form-group">
                                   <input type="text" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="reviewData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date" readonly>
                                 </div>
@@ -523,7 +534,7 @@
                               <div class="col-md-3">
                             <label class="pl"> Withdrawn Date</label>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                       <input type="text" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="reviewData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date" readonly>
                                     </div>
@@ -533,7 +544,7 @@
                                   <div class="col-md-3">
                                 <label class="pl"> Route of administration of Drug</label>
                                   </div>
-                                  <div class="col-md-3">
+                                  <div class="col-md-4">
                                       <div class="form-group">
                                           <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="reviewData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug" readonly>
                                         </div>
@@ -543,7 +554,7 @@
                                       <div class="col-md-3">
                                     <label class="pl"> Formulation of Drug</label>
                                       </div>
-                                      <div class="col-md-3">
+                                      <div class="col-md-4">
                                           <div class="form-group">
                                               <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="reviewData['Formulation_of_Drug']" name="Formulation_of_Drug" id="Formulation_of_Drug" readonly>
                                             </div>
@@ -554,10 +565,11 @@
                                         <label class="pl"> Brand drug mentioned?
                                           </label>
                                           </div>
-                                          <div class="col-md-3">
-                                              <label class="switch">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged"/>
-                                                  <span class="slider round"></span>
+                                          <div class="col-md-4">
+                                              <label class="">
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                                                  <span class="switch-handle"></span> -->
                                                 </label>
                                         </div>
                                            </div>
@@ -570,12 +582,12 @@
                                             </div>
                                                </div>
                                                
-                                                   <div class="modal-footer">
+                                                   <!-- <div class="modal-footer"> -->
                                                     <!-- <button type="button" class="btn btn-primary" href="#submited-buzz" (click)="('submited-buzz')" >Next</button> -->
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
+                                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
-                                                  </div>
+                                                  </div> -->
                                       </div>
           <div role="tabpanel" class="tab-pane fade" id="submited-buzz">
               <input type="checkbox" id="1" name="rememberMe"  >
@@ -657,17 +669,18 @@
   
               <input type="checkbox" id="26" name="rememberMe"  >
               <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
-              <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden>
+              <input type="checkbox" id="27" name="rememberMe"  >
+              <!-- <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" > -->
 
               <label for="27" class="checkbox"></label> Safety communication<br><br>
-              <div class="modal-footer">
+              <!-- <div class="modal-footer">
 
 
                <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for Review</button>
                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
                <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
        
-             </div>
+             </div> -->
           </div>
         
        </form>
@@ -688,16 +701,16 @@
       
         <!-- Modal Header -->
         <div class="modal-header  bg-white">
-           <h5 class="modal-title"><b>{{singleRecordData.result_title}} </b>
+           <h5 class="modal-title"><b>{{modaltitle}} </b>
   </h5>
           <button type="button" class="close" (click)="closemodal()" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
         <div class="modal-body">
-    <strong>Author Information:</strong> {{singleRecordData.author}}<br><br>
+    <strong>Author Information:</strong> {{authordata}}<br><br>
           <strong class="text-primary" style="font-size:18px;">Abstract</strong>
-          <p>{{singleRecordData.result_abstract}}</p>
+          <p>{{abstractdata}}</p>
         <br>
   
         <ul class="nav nav-tabs" role="tablist">
@@ -708,24 +721,23 @@
             <a class="nav-link" href="#draft-buzz" role="tab" data-toggle="tab">Comments</a>
           </li>
         </ul>
-         <div class="row">
-        <div class="scroll-area">
-            <div class="scrollspy" >
+        
                 
 
 
-<form [formGroup]="articleform" (ngSubmit)="articleonSubmit()" class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
+<form [formGroup]="draftForm" (ngSubmit)="articleonSubmit()" class="tab-content" style="padding:20px;border: 1px solid #e8ecef;">
           <div role="tabpanel" class="tab-pane fadein active" id="draft-profile">
   
             <div class="row">
               <div class="col-md-3">
             <label> Does Drugs Belongs to Aurobindo</label>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-4">
 
             <label class="">
-                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                <span class="slider round"></span>
+                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs" class="switch-input">
+                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                <span class="switch-handle"></span> -->
               </label>
             </div>
                </div>
@@ -733,9 +745,19 @@
                   <div class="col-md-3">
                 <label> Counter of authorization</label>
                   </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="reviewData['contryauth']" name="contryauth" id="contryauth" >
+                        </div>
+                </div>
+                   </div>
+                   <div class="row">
+                  <div class="col-md-3">
+                <label> id</label>
+                  </div>
                   <div class="col-md-3">
                       <div class="form-group">
-                          <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="reviewData['contryauth']" name="contryauth" id="contryauth" readonly>
+                          <input type="text" class="form-control" formControlName="id" [(ngModel)]="draftartData['id']" name="id" id="id" >
                         </div>
                 </div>
                    </div>
@@ -744,7 +766,7 @@
                       <div class="col-md-3">
                     <label class="pl"> Publication Date</label>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           <div class="form-group">
                               <input type="date" class="form-control" formControlName="Publication_Date" [(ngModel)]="publicationDate">
                             </div>
@@ -754,7 +776,7 @@
                           <div class="col-md-3">
                         <label class="pl"> Approval Date</label>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                               <div class="form-group">
                                   <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="approvalDate">
                                 </div>
@@ -764,7 +786,7 @@
                               <div class="col-md-3">
                             <label class="pl"> Withdrawn Date</label>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                       <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="withdrawDate">
                                     </div>
@@ -775,7 +797,7 @@
                       <div class="col-md-3">
                     <label class="pl"> Start Date</label>
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-4">
                           <div class="form-group">
                               <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="startDate" >
                             </div>
@@ -785,7 +807,7 @@
                           <div class="col-md-3">
                         <label class="pl"> Approval Date</label>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                               <div class="form-group">
                                   <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="drugApprovalDate">
                                 </div>
@@ -795,7 +817,7 @@
                               <div class="col-md-3">
                             <label class="pl"> Withdrawn Date</label>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                   <div class="form-group">
                                       <input type="date" class="form-control" formControlName="drugWithdrawn_Date"  [(ngModel)]="drugWithdrawCode">
                                     </div>
@@ -805,7 +827,7 @@
                                   <div class="col-md-3">
                                 <label class="pl"> Route of administration of Drug</label>
                                   </div>
-                                  <div class="col-md-3">
+                                  <div class="col-md-4">
                                       <div class="form-group">
                                           <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="administrationRoute">
                                         </div>
@@ -815,7 +837,7 @@
                                       <div class="col-md-3">
                                     <label class="pl"> Formulation of Drug</label>
                                       </div>
-                                      <div class="col-md-3">
+                                      <div class="col-md-4">
                                           <div class="form-group">
                                               <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="formulationDrug">
                                             </div>
@@ -826,10 +848,15 @@
                                         <label class="pl"> Brand drug mentioned?
                                           </label>
                                           </div>
-                                          <div class="col-md-3">
-                                              <label class="switch">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged"/>
-                                                  <span class="slider round"></span>
+                                          <div class="col-md-4">
+                                              <!-- <label class="switch">
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                                                  <span class="switch-handle"></span>
+                                                </label> -->
+                                                <label class="">
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  
                                                 </label>
                                         </div>
                                            </div>
@@ -844,10 +871,14 @@
                                                
                                                    <div class="modal-footer">
                                                     <!-- <button type="button" class="btn btn-primary" href="#draft-buzz" (click)="('draft-buzz')" >Next</button> -->
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
                                                   </div>
+
+
+
+
                                       </div>
           <div role="tabpanel" class="tab-pane fade" id="draft-buzz">
               <input type="checkbox" id="1" name="rememberMe"  >
@@ -929,7 +960,8 @@
   
               <input type="checkbox" id="26" name="rememberMe"  >
               <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
-              <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden>
+              <input type="checkbox" id="27" name="rememberMe"  >
+              <!-- <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden> -->
 
               <label for="27" class="checkbox"></label> Safety communication<br><br>
               <div class="modal-footer">
@@ -944,12 +976,6 @@
         
        </form>
 
-
-                  
-            </div>
-            
-        </div>
-    </div>
         </div>      
       </div>
     </div>

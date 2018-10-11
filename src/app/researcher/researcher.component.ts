@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{ResearchdataService} from '../services/research.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare let require: any;
 import {
  FormGroup,
@@ -39,8 +40,15 @@ private draftartData: Object = {};
  readonly:String;
  articleform: any;
 
+
+ //
+ authordata;
+ abstractdata;
+ modaltitle;
+ //
+
  private reseachViewData: Object = {};
- constructor(private researchdataService:ResearchdataService) { }
+ constructor(private researchdataService:ResearchdataService, private spinner: NgxSpinnerService) { }
 
 
 draftForm = new FormGroup(
@@ -88,10 +96,11 @@ reviewForm = new FormGroup(
 
      this.formCreate();
      console.log("calling----")
-       
+       this.spinner.show();
           this.researchdataService.getsearchArt()
            .subscribe((res) => {
              this.data = res;
+             this.spinner.hide();
              console.log("--data",this.data)
            });
 
@@ -123,6 +132,8 @@ closemodal() {
  $('#basemodal').hide();
  $('#draftModal').hide();
  $('#submitedModal').hide();
+ this.draftForm.reset();
+ this.reviewForm.reset();
 }
 
        openfullmode(data){
@@ -137,8 +148,8 @@ closemodal() {
        }
 
        singleRecord(id){
-         debugger;
-         this.singleRecordData = this.data[id];
+        
+        /* this.singleRecordData = this.data[id];*/
        }
 
        singleDaata(data) {
@@ -147,6 +158,10 @@ closemodal() {
 
 
          console.log("-----data",data)
+         this.authordata=data.author;
+         this.abstractdata=data.result_abstract;
+         this.modaltitle=data.result_title;
+         console.log("---ronnak---",this.authordata)
          if(data.status==" " || data.status==null){
            console.log("nothing");
            $('#basemodal').show();
@@ -226,13 +241,15 @@ closemodal() {
       console.log("----",this.articleform.value)
       this.reviewdata=this.articleform.value;
       // TODO: Use EventEmitter with form value
-      this.researchdataService.sumbitreview(this.reviewdata)
+      /*this.researchdataService.sumbitreview(this.reviewdata)
       console.warn(this.articleform.value);
-      this.articleform.reset();
+      this.articleform.reset();*/
     }
 
-    articleondraft(){
-       console.log("----articleondraft",this.articleform.value)
+   articleondraft(data){
+       console.log("----articleondraft",data)
+       this.researchdataService.sumbitdraftbyre(data);
+
     }
     deleteRecord(id){
       console.log("deleted id",id)
