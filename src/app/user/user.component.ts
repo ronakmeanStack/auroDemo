@@ -144,7 +144,7 @@ reviewForm = new FormGroup(
                   this.reviewdatas.push(this.tempdata[i])
                }
               
-
+               console.log("----data--",this.data)
              }
             
              this.spinner.hide();

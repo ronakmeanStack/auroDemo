@@ -88,7 +88,7 @@ bdColor="rgba(51,51,51,0.8)"
         <div class="scroll-area">
             <div class="scrollspy" >
                 <article class="article" *ngFor="let x of data; let i= index" >
-                   <span *ngIf="x.deleted==NULL || x.deleted=='no' || x.deleted==' '"> 
+                   <span *ngIf="x.deleted!=='yes'"> 
                     <div class="article-title" >
                         <p class="mb-0">{{x.result_title}}</p>
                        <!--  <span class="pull-right icon-circle_a"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span> -->
@@ -201,7 +201,7 @@ bdColor="rgba(51,51,51,0.8)"
               <div class="col-md-4">
 
             <label class="">
-                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="belongstatus" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
+                <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
                 <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
                 <span class="switch-handle"></span> -->
               </label>
@@ -326,7 +326,7 @@ bdColor="rgba(51,51,51,0.8)"
                                           </div>
                                           <div class="col-md-4">
                                               <label class="">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="draftartData['Brand_drug_mentioned']" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
                                                   <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
                                                   <span class="switch-handle"></span> -->
                                                 </label>
