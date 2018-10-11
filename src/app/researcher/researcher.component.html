@@ -322,7 +322,7 @@ bdColor="rgba(51,51,51,0.8)"
                                                    <div class="modal-footer">
                                                     <!-- <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button> -->
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as Draft</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="formreset()">Clear</button>
                                             
                                                   </div>
                                       </div>
@@ -452,7 +452,7 @@ bdColor="rgba(51,51,51,0.8)"
             <a class="nav-link" href="#submited-buzz" role="tab" data-toggle="tab">Comments</a>
           </li>
         </ul>
-        <form [formGroup]="articleform" (ngSubmit)="articleonSubmit()" class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
+        <form [formGroup]="reviewForm" (ngSubmit)="articleonSubmit()" class="tab-content" style="padding:30px;border: 1px solid #e8ecef;">
           <div role="tabpanel" class="tab-pane fadein active" id="submited-profile">
   
             <div class="row">
@@ -735,7 +735,7 @@ bdColor="rgba(51,51,51,0.8)"
               <div class="col-md-4">
 
             <label class="">
-                <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs" class="switch-input">
+                <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
                 <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
                 <span class="switch-handle"></span> -->
               </label>
@@ -747,7 +747,7 @@ bdColor="rgba(51,51,51,0.8)"
                   </div>
                   <div class="col-md-4">
                       <div class="form-group">
-                          <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="reviewData['contryauth']" name="contryauth" id="contryauth" >
+                          <input type="text" class="form-control" formControlName="contryauth" [(ngModel)]="draftartData['contryauth']" name="contryauth" id="contryauth" >
                         </div>
                 </div>
                    </div>
@@ -768,7 +768,7 @@ bdColor="rgba(51,51,51,0.8)"
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <input type="date" class="form-control" formControlName="Publication_Date" [(ngModel)]="publicationDate">
+                              <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Publication_Date']" name="Publication_Date" id="Publication_Date" >
                             </div>
                     </div>
                        </div>
@@ -778,7 +778,7 @@ bdColor="rgba(51,51,51,0.8)"
                           </div>
                           <div class="col-md-4">
                               <div class="form-group">
-                                  <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="approvalDate">
+                                   <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date" >
                                 </div>
                         </div>
                            </div>
@@ -788,7 +788,7 @@ bdColor="rgba(51,51,51,0.8)"
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="withdrawDate">
+                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date" >
                                     </div>
                             </div>
                                </div>
@@ -799,7 +799,7 @@ bdColor="rgba(51,51,51,0.8)"
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="startDate" >
+                              <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="draftartData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date">
                             </div>
                     </div>
                        </div>
@@ -809,7 +809,7 @@ bdColor="rgba(51,51,51,0.8)"
                           </div>
                           <div class="col-md-4">
                               <div class="form-group">
-                                  <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="drugApprovalDate">
+                                  <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="draftartData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date">
                                 </div>
                         </div>
                            </div>
@@ -819,7 +819,7 @@ bdColor="rgba(51,51,51,0.8)"
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <input type="date" class="form-control" formControlName="drugWithdrawn_Date"  [(ngModel)]="drugWithdrawCode">
+                                      <input type="date" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="draftartData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date">
                                     </div>
                             </div>
                                </div>
@@ -829,7 +829,7 @@ bdColor="rgba(51,51,51,0.8)"
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
-                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="administrationRoute">
+                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="draftartData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug">
                                         </div>
                                 </div>
                                    </div>
@@ -839,7 +839,7 @@ bdColor="rgba(51,51,51,0.8)"
                                       </div>
                                       <div class="col-md-4">
                                           <div class="form-group">
-                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="formulationDrug">
+                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="draftartData['Formulation_of_Drug']" name="contryauth" id="Formulation_of_Drug">
                                             </div>
                                     </div>
                                        </div>
@@ -864,7 +864,7 @@ bdColor="rgba(51,51,51,0.8)"
                                            <div class="row">
                                               <div class="col-md-12">
                                                   <div class="form-group">
-                                                      <textarea class="form-control" rows="5" id="comment" formControlName="Author_Comments" [(ngModel)]="authorComment"></textarea>
+                                                      <textarea class="form-control" rows="5" formControlName="Author_Comments" [(ngModel)]="draftartData['Author_Comments']" name="contryauth" id="Author_Comments"></textarea>
                                                     </div>
                                             </div>
                                                </div>

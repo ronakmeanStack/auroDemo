@@ -178,6 +178,7 @@ reviewForm = new FormGroup(
 
 closemodal() {
  $('#basemodal').hide();
+ $('#triagemodal').hide();
 
 }
 

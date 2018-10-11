@@ -325,12 +325,13 @@ bdColor="rgba(51,51,51,0.8)"
                                           </label>
                                           </div>
                                           <div class="col-md-4">
-                                              <label class="">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="draftartData['Brand_drug_mentioned']" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
-                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                                                  <span class="switch-handle"></span> -->
-                                                </label>
+                                               <label class="">
+                <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
+                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
+                <span class="switch-handle"></span> -->
+              </label>
                                         </div>
+
                                            </div>
                                            <label class="text-primary">Author Comments</label>
                                            <div class="row">
@@ -562,7 +563,7 @@ bdColor="rgba(51,51,51,0.8)"
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date" readonlyreadonly>
+                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date" readonly>
                                     </div>
                             </div>
                                </div>
@@ -624,7 +625,7 @@ bdColor="rgba(51,51,51,0.8)"
                                           </div>
                                           <div class="col-md-4">
                                               <label class="">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/ readonly>
+                                                  <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
                                                   <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
                                                   <span class="switch-handle"></span> -->
                                                 </label>

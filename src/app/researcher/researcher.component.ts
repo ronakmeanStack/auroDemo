@@ -256,5 +256,8 @@ closemodal() {
       this.researchdataService.removearticle(id);
       
     }
+    formreset(){
+      this.articleform.reset();
+    }
 
 }
