@@ -79,11 +79,11 @@ bdColor="rgba(51,51,51,0.8)"
     </div>
 </div> 
 <div class="container mt-4">
-    <div class="clearfix mt-1">
+   <!--  <div class="clearfix mt-1">
       <h5 class="mt-2 mb-2">Abacavir Lamivundine...<span class="title-gray">Weekly(20-30sept)</span></h5>
       <span class="icon-circle pos-block">
         <i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
-    </div>
+    </div> -->
     <div class="">
         <div class="scroll-area">
             <div class="scrollspy" >
@@ -101,8 +101,9 @@ bdColor="rgba(51,51,51,0.8)"
                                   <button type="button" class="btn btn-default btn-sm open-modals" data-target="#basemodal" (click)="singleDaata(x)" >Full View</button>
                                         
                                         <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">Submitted for Review</button>
+                                         <button type="button" *ngIf="x.status=='saved as triage'" class="btn btn-default btn-sm open-modals">Saved as triage</button>
                                         <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">Saved as Draft</button>
-                                        <button type="button"  *ngIf="x.status !=='submit for review' && x.status !=='saved as drafted' " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
+                                        <button type="button"  *ngIf="x.status =='saved as drafted' || x.status ==NULL " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
 
                                 </div>                             
                             
@@ -488,7 +489,7 @@ bdColor="rgba(51,51,51,0.8)"
                         </div>
                 </div>
                    </div>
-                   
+
                    <label class="text-primary">Product</label>
                    <div class="row">
                       <div class="col-md-3">
@@ -883,7 +884,7 @@ bdColor="rgba(51,51,51,0.8)"
                                                    <div class="modal-footer">
                                                     <!-- <button type="button" class="btn btn-primary" href="#draft-buzz" (click)="('draft-buzz')" >Next</button> -->
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="resetdraftform()">Clear</button>
                                             
                                                   </div>
 

@@ -9,3 +9,6 @@ left: 0;
 z-index: 1040;
 background-color: #fff;
 }
+.container.mt-4 > div {
+	padding-bottom: 50px;
+}

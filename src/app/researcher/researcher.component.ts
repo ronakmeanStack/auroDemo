@@ -170,6 +170,24 @@ closemodal() {
            $('#basemodal').show();
 
          }
+         if(data.status=="saved as triage"){
+           console.log("saved as triage");
+            $('#submitedModal').show();
+       this.reviewData['id']=data.id;
+      this.reviewData['belongstatus']=data.belongstatus;
+      this.reviewData['contryauth']=data.contryauth;
+      this.reviewData['Publication_Date']=data.Publication_Date;
+      this.reviewData['Product_Approval_Date']=data.Product_Approval_Date;
+      this.reviewData['Product_Withdrawn_Date']=data.Product_Withdrawn_Date;
+      this.reviewData['drug_Start_Date']=data.drug_Start_Date;
+      this.reviewData['drugApproval_Date']=data.drugApproval_Date;
+      this.reviewData['drugWithdrawn_Date']=data.drugWithdrawn_Date;
+      this.reviewData['administration_of_Drug']=data.administration_of_Drug;
+      this.reviewData['Formulation_of_Drug']=data.Formulation_of_Drug;
+      this.reviewData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
+      this.reviewData['Author_Comments']=data.Author_Comments;
+
+         }
          else if(data.status=="submit for review"){
            console.log("submit for review")
       $('#submitedModal').show();
@@ -260,13 +278,16 @@ closemodal() {
     }
     deleteRecord(id){
       console.log("deleted id",id)
+      this.removearticle()
       this.researchdataService.removearticle(id);
       
     }
     formreset(){
       this.articleform.reset();
     }
-
+resetdraftform(){
+  this.draftForm.reset();
+}
 showSuccessdraft() {
     this.toastr.success('Draft saved', 'Success!');
   }
@@ -274,8 +295,8 @@ showSuccessdraft() {
     this.toastr.success('Review saved', 'Success!');
   }
   
-  showError(){
-    this.toastr.error('password or user not matching!', 'Error!');
+  removearticle(){
+    this.toastr.error('Article', 'Removed');
   }
 
 }

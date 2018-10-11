@@ -426,6 +426,8 @@ h5.mt-2.mb-2 {
   left: -99999px;
   top: -9999px;
 }
-#basemodal form.tab-content #base-profile > .row:nth-child(3) {
+#basemodal form.tab-content #base-profile > .row:nth-child(3),
+#submitedModal form.tab-content #submited-profile > .row:nth-child(3),
+#draftModal form.tab-content #draft-profile > .row:nth-child(3) {
   display: none;
 }

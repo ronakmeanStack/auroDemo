@@ -523,7 +523,7 @@ bdColor="rgba(51,51,51,0.8)"
                    </div>
 
 
- <div class="row">
+               <div class="row">
                   <div class="col-md-3">
                 <label> id</label>
                   </div>
@@ -736,7 +736,7 @@ bdColor="rgba(51,51,51,0.8)"
 
                <button type="button" class="btn btn-primary" (click)="articleontriage(draftartData)" data-dismiss="modal">Submit for Triage</button>
                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
+               <button type="button" class="btn btn-default"(click)="draftartreset()" data-dismiss="modal">Clear</button>
        
              </div>
           </div>

@@ -341,5 +341,8 @@ else{
        console.log("----articleondraft",data)
        this.researchdataService.sumbitdtriage(data);
     }
+    draftartreset(){
+      this.draftForm.reset();
+    }
 
 }
