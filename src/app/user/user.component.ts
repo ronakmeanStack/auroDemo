@@ -35,6 +35,7 @@ export class UserComponent implements OnInit {
  data=[];
  tempdata=[];
 reviewdataValue;
+reviewdatas=[];
  //reviewdata=[];
 private reviewData: Object = {};
 private draftartData: Object = {};
@@ -139,12 +140,16 @@ reviewForm = new FormGroup(
                this.data.push(this.tempdata[i])
                 //this.data.push(x);
                }
+               if(this.tempdata[i].status=="submit for review"){
+                  this.reviewdatas.push(this.tempdata[i])
+               }
+              
 
              }
             
              this.spinner.hide();
-             this.reviewdataValue=this.data.length;
-             console.log("--data",this.data)
+             this.reviewdataValue=this.reviewdatas.length;
+             
            });
 
        }
