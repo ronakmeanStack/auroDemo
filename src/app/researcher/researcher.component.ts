@@ -8,6 +8,7 @@ import {
  Validators,
  FormControl
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 @Component({
@@ -48,7 +49,7 @@ private draftartData: Object = {};
  //
 
  private reseachViewData: Object = {};
- constructor(private researchdataService:ResearchdataService, private spinner: NgxSpinnerService) { }
+ constructor(private researchdataService:ResearchdataService, private toastr:ToastrService, private spinner: NgxSpinnerService) { }
 
 
 draftForm = new FormGroup(
@@ -241,18 +242,21 @@ closemodal() {
      }
 
       articleonSubmit() {
+      this.showSuccessreview();
       console.log("----",this.articleform.value)
       this.reviewdata=this.articleform.value;
       // TODO: Use EventEmitter with form value
       /*this.researchdataService.sumbitreview(this.reviewdata)
       console.warn(this.articleform.value);
       this.articleform.reset();*/
+      this.closemodal();
     }
 
    articleondraft(data){
+     this.showSuccessdraft();
        console.log("----articleondraft",data)
        this.researchdataService.sumbitdraftbyre(data);
-
+       this.closemodal();
     }
     deleteRecord(id){
       console.log("deleted id",id)
@@ -262,5 +266,16 @@ closemodal() {
     formreset(){
       this.articleform.reset();
     }
+
+showSuccessdraft() {
+    this.toastr.success('Draft saved', 'Success!');
+  }
+  showSuccessreview() {
+    this.toastr.success('Review saved', 'Success!');
+  }
+  
+  showError(){
+    this.toastr.error('password or user not matching!', 'Error!');
+  }
 
 }

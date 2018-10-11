@@ -28,6 +28,7 @@
     "mysql": "^2.16.0",
     "ng-sidebar": "^8.0.0",
     "ngx-spinner": "^6.1.2",
+    "ngx-toastr": "^9.1.0",
     "node-sass": "^4.9.3",
     "rxjs": "~6.2.0",
     "rxjs-compat": "^6.3.3",

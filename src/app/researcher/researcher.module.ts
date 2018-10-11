@@ -6,9 +6,10 @@ import { researcherRoute } from './researcher-routing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
-  imports: [CommonModule, NgxSpinnerModule , RouterModule.forChild(researcherRoute),ReactiveFormsModule,FormsModule],
+  imports: [CommonModule, NgxSpinnerModule ,ToastrModule.forRoot(), RouterModule.forChild(researcherRoute),ReactiveFormsModule,FormsModule],
   declarations: [ResearcherComponent]
 })
 export class ResearcherModule {}

@@ -24,6 +24,7 @@ import {
  Validators,
  FormControl
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 @Component({
@@ -66,7 +67,7 @@ private draftartData: Object = {};
  //
 
  private reseachViewData: Object = {};
- constructor(private researchdataService:ResearchdataService, private spinner: NgxSpinnerService) { }
+ constructor(private researchdataService:ResearchdataService, private toastr:ToastrService, private spinner: NgxSpinnerService) { }
 
 
 draftForm = new FormGroup(
@@ -105,7 +106,15 @@ reviewForm = new FormGroup(
   )
 
    
-
+showSuccessdraft() {
+    this.toastr.success('Draft', 'Success!');
+  }
+  showSuccessreview() {
+    this.toastr.success('review', 'Success!');
+  }
+  showError(){
+    this.toastr.error('password or user not matching!', 'Error!');
+  }
 
 
 
@@ -318,6 +327,7 @@ else{
     }
 
     articleondraft(data){
+      this.showSuccessdraft()
        console.log("----articleondraft",data)
        this.researchdataService.sumbitdraft(data);
 

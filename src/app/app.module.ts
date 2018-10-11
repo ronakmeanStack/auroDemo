@@ -21,6 +21,8 @@ import { SidebarModule } from 'ng-sidebar';
 //service
 import{LoginService} from './login/login.service'
 import {ResearchdataService} from './services/research.service'
+//extra
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, NavbarComponent, FooterComponent],
   imports: [
@@ -31,7 +33,8 @@ import {ResearchdataService} from './services/research.service'
     BrowserAnimationsModule,
     ReactiveFormsModule,
     SidebarModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [LoginService,ResearchdataService],
   bootstrap: [AppComponent]
