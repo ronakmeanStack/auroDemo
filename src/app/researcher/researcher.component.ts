@@ -173,19 +173,6 @@ closemodal() {
          if(data.status=="saved as triage"){
            console.log("saved as triage");
             $('#submitedModal').show();
-       this.reviewData['id']=data.id;
-      this.reviewData['belongstatus']=data.belongstatus;
-      this.reviewData['contryauth']=data.contryauth;
-      this.reviewData['Publication_Date']=data.Publication_Date;
-      this.reviewData['Product_Approval_Date']=data.Product_Approval_Date;
-      this.reviewData['Product_Withdrawn_Date']=data.Product_Withdrawn_Date;
-      this.reviewData['drug_Start_Date']=data.drug_Start_Date;
-      this.reviewData['drugApproval_Date']=data.drugApproval_Date;
-      this.reviewData['drugWithdrawn_Date']=data.drugWithdrawn_Date;
-      this.reviewData['administration_of_Drug']=data.administration_of_Drug;
-      this.reviewData['Formulation_of_Drug']=data.Formulation_of_Drug;
-      this.reviewData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
-      this.reviewData['Author_Comments']=data.Author_Comments;
 
          }
          else if(data.status=="submit for review"){
@@ -264,9 +251,9 @@ closemodal() {
       console.log("----",this.articleform.value)
       this.reviewdata=this.articleform.value;
       // TODO: Use EventEmitter with form value
-      /*this.researchdataService.sumbitreview(this.reviewdata)
+      this.researchdataService.sumbitreview(this.reviewdata)
       console.warn(this.articleform.value);
-      this.articleform.reset();*/
+      this.articleform.reset();
       this.closemodal();
     }
 

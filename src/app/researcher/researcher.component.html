@@ -86,7 +86,7 @@ bdColor="rgba(51,51,51,0.8)"
     </div> -->
     <div class="">
         <div class="scroll-area">
-            <div class="scrollspy" >
+            <div class="scrollspy-removed" >
                 <article class="article" *ngFor="let x of data; let i= index" >
                    <span *ngIf="x.deleted==NULL || x.deleted=='no' || x.deleted==' '"> 
                     <div class="article-title" >
@@ -867,7 +867,7 @@ bdColor="rgba(51,51,51,0.8)"
                                                   <span class="switch-handle"></span>
                                                 </label> -->
                                                 <label class="">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
+                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
                                                   
                                                 </label>
                                         </div>

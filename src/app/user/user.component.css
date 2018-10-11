@@ -57,10 +57,10 @@ padding: 10px 35px;
  border: 2px solid #f2f2f2;
  padding: 10px;
 }
-.scrollspy{
+/*.scrollspy{
  max-height: 350px;
  overflow-y:scroll;
-}
+}*/
 .article > span {
   display: block;
 }
@@ -426,7 +426,7 @@ h5.mt-2.mb-2 {
   left: -99999px;
   top: -9999px;
 }
-#basemodal form.tab-content #base-profile > .row:nth-child(3),
+/*#basemodal form.tab-content #base-profile > .row:nth-child(3),
 #triagemodal form.tab-content #base-profile > .row:nth-child(3) {
   display: none;
-}
+}*/

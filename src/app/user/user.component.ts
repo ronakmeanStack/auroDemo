@@ -207,6 +207,7 @@ closemodal() {
 
 
 if(data.status=="saved as triage"){
+  console.log("========save as triage")
 $('#triagemodal').show()
       this.draftartData['id']=data.id;
       this.draftartData['belongstatus']=data.belongstatus;

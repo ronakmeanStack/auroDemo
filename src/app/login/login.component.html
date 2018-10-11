@@ -28,7 +28,7 @@
         <div class="col-md-5 col-md-auto" style="background: rgba(83, 180, 168, 0.1);border-radius: 25px;padding: 25px 20px;" >
             <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="login-logo text-center mb-3"> <img src="assets/logo-1.png" alt="brand logo"></div>
-                <h3 class="text-center mb-3">LITERATURE MONITORING</h3> 
+                <h4 class="text-center mb-3">GPVD - LITERATURE MONITORING</h4> 
                 <div class="form-group">
                     <input type="text" formControlName="username" class="form-control col-md-10 offset-md-1" placeholder="User Name" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
@@ -42,7 +42,7 @@
                 </div>
                 </div>
                 <div class="form-LITERATURE MONITORINGgroup mt-3">
-                    <button type="submit" class="btn btn-primary btn-block form-control col-md-3 offset-md-1" >Log in</button>
+                    <button type="submit" class="btn btn-primary btn-block form-control col-md-3 offset-md-1" >Log In</button>
                 </div>
                  <div class=" form-LITERATURE MONITORINGgroup mt-3 d-none">
                     

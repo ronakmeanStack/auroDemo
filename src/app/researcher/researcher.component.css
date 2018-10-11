@@ -57,10 +57,10 @@ padding: 10px 35px;
  border: 2px solid #f2f2f2;
  padding: 10px;
 }
-.scrollspy{
+/*.scrollspy{
  max-height: 350px;
  overflow-y:scroll;
-}
+}*/
 .article > span {
   display: block;
 }
