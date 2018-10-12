@@ -46,5 +46,8 @@ app.post('/savedraftres',function(req,res,next){
 app.post('/savedtriage',function(req,res,next){
   dashboard.savedtriage(req,res);
 })
+app.post('/savearasDraftticle',function(req,res,next){
+   dashboard.savedasdraftintial(req,res);
+})
 
 module.exports = app;

@@ -431,3 +431,12 @@ h5.mt-2.mb-2 {
 #draftModal form.tab-content #draft-profile > .row:nth-child(3) {
   display: none;
 }
+.label-small {
+  display: inline-block;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  margin: 0 3px;
+}

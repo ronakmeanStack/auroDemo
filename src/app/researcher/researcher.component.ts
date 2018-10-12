@@ -165,10 +165,23 @@ closemodal() {
          this.abstractdata=data.result_abstract;
          this.modaltitle=data.result_title;
          console.log("---ronnak---",this.authordata)
-         if(data.status==" " || data.status==null){
+         if(data.status==" " || data.status==null ||data.status=="NULL"){
            console.log("nothing");
-           $('#basemodal').show();
-
+           //$('#basemodal').show();
+      $('#draftModal').show();
+      this.draftartData['id']=data.id;
+      this.draftartData['belongstatus']=data.belongstatus;
+      this.draftartData['contryauth']=data.contryauth;
+      this.draftartData['Publication_Date']=data.Publication_Date;
+      this.draftartData['Product_Approval_Date']=data.Product_Approval_Date;
+      this.draftartData['Product_Withdrawn_Date']=data.Product_Withdrawn_Date;
+      this.draftartData['drug_Start_Date']=data.drug_Start_Date;
+      this.draftartData['drugApproval_Date']=data.drugApproval_Date;
+      this.draftartData['drugWithdrawn_Date']=data.drugWithdrawn_Date;
+      this.draftartData['administration_of_Drug']=data.administration_of_Drug;
+      this.draftartData['Formulation_of_Drug']=data.Formulation_of_Drug;
+      this.draftartData['Brand_drug_mentioned']=data.Brand_drug_mentioned;
+      this.draftartData['Author_Comments']=data.Author_Comments;
          }
          if(data.status=="saved as triage"){
            console.log("saved as triage");
@@ -257,19 +270,48 @@ closemodal() {
       this.closemodal();
     }
 
-   articleondraft(data){
+     articlesaveDraft() {
+      this.showSuccessreview();
+      console.log("----",this.articleform.value)
+      this.reviewdata=this.articleform.value;
+      // TODO: Use EventEmitter with form value
+      this.researchdataService.sumbitreview(this.reviewdata)
+      console.warn(this.articleform.value);
+      this.articleform.reset();
+      this.closemodal();
+    }
+
+  /* articleondraft(data){
      this.showSuccessdraft();
        console.log("----articleondraft",data)
-       this.researchdataService.sumbitdraftbyre(data);
+     this.researchdataService.sumbitdraftbyre(data);
        this.closemodal();
     }
-    deleteRecord(id){
-      console.log("deleted id",id)
-      this.removearticle()
-      this.researchdataService.removearticle(id);
-      
+    articlesumbit(data){
+      this.showSuccessdraft();
+       console.log("----articleondraft",data)
+       console.warn(this.articleform.value);
+      this.articleform.reset();
+      this.closemodal();
+    }*/
+  
+   
+
+  ///new function
+     articleondraft(data){
+     this.showSuccessdraft();
+     console.log("----articleondraft",data)
+     this.researchdataService.sumbitdraftbyre(data);
+       this.closemodal();
     }
-    formreset(){
+    articlesumbit(data){
+      this.showSuccessdraft();
+      console.log("----articleondraft",data)
+     this.researchdataService.sumbitreview(data);
+      this.closemodal();
+    }
+    //toaster function
+     formreset(){
       this.articleform.reset();
     }
 resetdraftform(){
@@ -285,5 +327,10 @@ showSuccessdraft() {
   removearticle(){
     this.toastr.error('Article', 'Removed');
   }
-
+  deleteRecord(id){
+      console.log("deleted id",id)
+      this.removearticle()
+      this.researchdataService.removearticle(id);
+      
+    }
 }

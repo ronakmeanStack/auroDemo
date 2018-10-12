@@ -68,22 +68,12 @@ bdColor="rgba(51,51,51,0.8)"
 
 
 
-        <!-- <div class="col-md-1">
-            <div class="row arrow">
-              <div class="co-12 angle-icon ">
-                <a><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-              </div>
-            </div>
-      </div> -->
+       
 
     </div>
 </div> 
 <div class="container mt-4">
-   <!--  <div class="clearfix mt-1">
-      <h5 class="mt-2 mb-2">Abacavir Lamivundine...<span class="title-gray">Weekly(20-30sept)</span></h5>
-      <span class="icon-circle pos-block">
-        <i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
-    </div> -->
+  
     <div class="">
         <div class="scroll-area">
             <div class="scrollspy-removed" >
@@ -95,15 +85,16 @@ bdColor="rgba(51,51,51,0.8)"
                         
                     </div>
                     <div class="article-text">
-                            <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat(".."):x.result_abstract}}</p>
+                            <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat("..."):x.result_abstract}}</p>
                                 <div class="pull-right d-none pt-2">
                                   <!-- data-target="#myModal"  -->
-                                  <button type="button" class="btn btn-default btn-sm open-modals" data-target="#basemodal" (click)="singleDaata(x)" >Full View</button>
+                                  <small *ngIf="x.status=='submit for review'" class="label-small open-modals">Submitted for Review</small>
+                                   <small  *ngIf="x.status=='saved as triage'" class="label-small open-modals">Saved as triage</small>
+                                  <small  *ngIf="x.status=='saved as drafted'"  class="label-small open-modals">Saved as Draft</small>
+                                  <button type="button" class="btn btn-primary btn-sm open-modals" data-target="#basemodal" (click)="singleDaata(x)" >Full View</button>
                                         
-                                        <button type="button" *ngIf="x.status=='submit for review'" class="btn btn-default btn-sm open-modals">Submitted for Review</button>
-                                         <button type="button" *ngIf="x.status=='saved as triage'" class="btn btn-default btn-sm open-modals">Saved as triage</button>
-                                        <button  *ngIf="x.status=='saved as drafted'"type="button"  class="btn btn-default btn-sm open-modals">Saved as Draft</button>
-                                        <button type="button"  *ngIf="x.status =='saved as drafted' || x.status ==NULL " (click)="deleteRecord(x.id)" class="btn btn-default btn-sm">Remove</button>
+                                        
+                                        <button type="button"  *ngIf="x.status =='saved as drafted' || x.status ==NULL || x.status =='NULL' " (click)="deleteRecord(x.id)" class="btn btn-primary btn-sm">Remove</button>
 
                                 </div>                             
                             
@@ -130,46 +121,22 @@ bdColor="rgba(51,51,51,0.8)"
 </div>
 
 
-<!-- modal -->
 
- <!-- <div class="modal inmodal rounded-corners "   id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
-  <div class="modal-dialog modal-lg rounded-corners " style="width:100%">
-    <div class="modal-content animated fadeIn rounded-corners " style="background-color: rgb(239, 236, 236);">
-      <div class="rounded-corners" style="background-color: rgb(239, 236, 236); text-align:center;">
-      </div>
-      <div class="panel panel-default">
-        <button type="button" class="close" data-dismiss="modal" (click)="closemodal($event)" >&times;</button>
-        <div class="panel-body" >
-          <p>hello</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>  -->
-
-
-
-
-
-<!-- end modal -->
 
 
 <!-- my modal -->
-<div class="modal" id="basemodal">
+<!-- <div class="modal" id="basemodal">
     <div class="modal-dialog">
       <div class="modal-content">
       
-        <!-- Modal Header -->
+       
         <div class="modal-header  bg-white">
            <h5 class="modal-title"><b>{{modaltitle}} </b>
   </h5>
           <button type="button" class="close" (click)="closemodal()" data-dismiss="modal">&times;</button>
         </div>
         
-        <!-- Modal body -->
+       
         <div class="modal-body">
     <strong>Author Information:</strong> {{authordata}}<br><br>
           <strong class="text-primary" style="font-size:18px;">Abstract</strong>
@@ -196,14 +163,9 @@ bdColor="rgba(51,51,51,0.8)"
 
             <label class="">
                 <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs" class="switch-input">
-                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                <span class="switch-handle"></span> -->
+               
               </label>
-              <!-- <div class="checkbox">
-                <label>
-                  <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                </label>
-              </div> -->
+              
             </div>
                </div>
                <div class="row">
@@ -306,8 +268,7 @@ bdColor="rgba(51,51,51,0.8)"
                                           <div class="col-md-4">
                                               <label class="">
                                                   <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
-                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                                                  <span class="switch-handle"></span> -->
+                                                 
                                                 </label>
                                         </div>
                                            </div>
@@ -321,8 +282,8 @@ bdColor="rgba(51,51,51,0.8)"
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <!-- <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button> -->
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft()">Save as Draft</button>
+                                                   
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleonSubmit()">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="formreset()">Clear</button>
                                             
                                                   </div>
@@ -424,7 +385,7 @@ bdColor="rgba(51,51,51,0.8)"
         </div>      
       </div>
     </div>
-  </div>
+  </div> -->
 
 <!-- end -->
 <div class="modal" id="submitedModal">
@@ -861,11 +822,7 @@ bdColor="rgba(51,51,51,0.8)"
                                           </label>
                                           </div>
                                           <div class="col-md-4">
-                                              <!-- <label class="switch">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="brandDrag" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
-                                                  <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                                                  <span class="switch-handle"></span>
-                                                </label> -->
+                                             
                                                 <label class="">
                                                   <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
                                                   
@@ -973,14 +930,14 @@ bdColor="rgba(51,51,51,0.8)"
               <input type="checkbox" id="26" name="rememberMe"  >
               <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
               <input type="checkbox" id="27" name="rememberMe"  >
-              <!-- <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden> -->
+              
 
               <label for="27" class="checkbox"></label> Safety communication<br><br>
               <div class="modal-footer">
 
 
-               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for Review</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
+               <button type="button" class="btn btn-primary" (click)="articlesumbit(draftartData)" data-dismiss="modal">Submit for Review</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
                <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
        
              </div>

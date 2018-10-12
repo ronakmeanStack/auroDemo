@@ -26,6 +26,19 @@ export class ResearchdataService {
       })
       .subscribe(res => res.json);
   }
+
+   sumbitasdraft(datas) {
+    const headers = new Headers();
+    var data = datas;
+    console.log('mail----service ' + JSON.stringify(data));
+    headers.append('Content-Type', 'application/json');
+    return this._http
+      .post('/api/savearasDraftticle', JSON.stringify(data), {
+        headers: headers,
+        withCredentials: true
+      })
+      .subscribe(res => res.json);
+  }
  /* getreseachdata(): Observable<any>{
     console.log("will get the data")
    return this.httpClient.get('/api/getsrchresult').map(res =>res.json);
@@ -92,7 +105,7 @@ removearticle(id) {
 sumbitdraftbyre(data) {
     const headers = new Headers();
     var data = data;
-    console.log('sumbitdraft----service ' + JSON.stringify(data));
+    console.log('sumbitdraft----service by researcher' + JSON.stringify(data));
     headers.append('Content-Type', 'application/json');
     return this._http
       .post('/api/savedraftres', JSON.stringify(data), {
