@@ -39,32 +39,40 @@
      <nav id="sidebar" >
        <!--  <a class="navbar-brand text-center" href="#"><img src="assets/logo.png" width="230px" height="50px" class="logo" alt="brand logo"></a> -->
         <ul>
-            <li>
-                <!-- <a routerLink="/app/d2">Home</a> -->
-                <a href="#"><i class="fa fa-home" aria-hidden="true"></i>
-                  <!-- <img src="assets/home.png"> -->
-                </a>
-                  <small>Home</small>
-            </li>
-            <li>
+           
+          
+
+             <li *ngIf="rolevalues=='Admin'">
                 <!-- <a routerLink="/app/d1">Researcher</a> -->
-               <a href="#"><i class="fa fa-user-circle" aria-hidden="true"></i></a> 
-                <small>Researcher</small>
+               <a routerLink="/app/admin/home" routerLinkActive="active"><i class="fa fa-home" aria-hidden="true"></i></a> 
+                <small>Home</small>
             </li>
-            <li>
+
+             <li *ngIf="rolevalues=='Admin'">
+                <!-- <a routerLink="/app/d1">Researcher</a> -->
+               <a routerLink="/app/admin/create" routerLinkActive="active"><i class="fa fa-user-circle" aria-hidden="true"></i></a> 
+                <small>Create user</small>
+            </li>
+            <li *ngIf="rolevalues=='Admin'">
+                <!-- <a routerLink="/app/d1">Researcher</a> -->
+               <a routerLink="/app/admin/usertable" routerLinkActive="active"><i class="fa fa-address-card" aria-hidden="true"></i></a> 
+                <small>Manage user</small>
+            </li>
+           
+            <!-- <li>
                 <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i> </a>
                 <small>Page</small>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                 <small>Portfolio</small>
-            </li>
-            <!-- <li>
-                <a *ngIf="role=='admin'" routerLink="/app/setting"><i class="fa fa-cogs" aria-hidden="true"></i></a>
-                <small>Setting</small>
             </li> -->
+            <li>
+                <a routerLink="/app/setting"><i class="fa fa-cogs" aria-hidden="true"></i></a>
+                <small>Setting</small>
+            </li>
              <li>
-                <a  routerLink="/login"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                <a  ><i (click)="logout()" class="fa fa-sign-out" aria-hidden="true"></i></a>
                 <small>Logout</small>
             </li>
         </ul>
@@ -94,7 +102,7 @@
               <div class="media">
               <div class="media-body text-right mt-3 mr-2 p-0">
                 <p class="media-heading mb-0 p-0">{{name}}</p>
-                <small class="mb-0 p-0">{{role}}</small>
+                <small class="mb-0 p-0">{{rolevalues}}</small>
               </div>
             <div class="media-right">
               <img src="assets/img_avatar.png" class="media-object" >

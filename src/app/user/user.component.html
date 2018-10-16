@@ -27,62 +27,15 @@ bdColor="rgba(51,51,51,0.8)"
                     </div>
                 </div>
 
-
-
-                <!-- <div class="col-md-4">
-                    <div class="card card-2">
-                        <div class="card-body">
-                            <h2 class="card-title">78 </h2>
-                            <h4 class="card-text">Deanol Ascorbic Acid Magnesium...</h4>
-                            <div class="card-text-sub">
-                                    Monthly
-                                </div>
-                            <div class="row card-bottom">
-                                <div class="col-md-8">Aug 01- Aug 31</div>
-                                <div class="col-md-4">Springer</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    <div class="card card-3">
-                        <div class="card-body">
-                            <h2 class="card-title">68 </h2>
-                            <h4 class="card-text">Amiloride And Hydrochlorothiazide</h4>
-                            <div class="card-text-sub">
-                                    Custom
-                                </div>
-                            <div class="row card-bottom">
-                                <div class="col-md-8">Aug 01- Oct 03</div>
-                                <div class="col-md-4">Springer</div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
             </div>
         </div>
 
-
-
-
-        <!-- <div class="col-md-1">
-            <div class="row arrow">
-              <div class="co-12 angle-icon ">
-                <a><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-              </div>
-            </div>
-      </div> -->
 
     </div>
 </div> 
 <div class="container mt-4">
     <div class="clearfix pt-2 pb-2">
-      <!-- <h5 class="mt-2 mb-2">Abacavir Lamivundine...<span class="title-gray">Weekly(20-30sept)</span></h5> -->
-      <!-- <span class="icon-circle pos-block">
-        <i class="fa fa-ellipsis-v" aria-hidden="true"></i></span> -->
+     
     </div>
     <div class="">
         <div class="scroll-area">
@@ -91,8 +44,7 @@ bdColor="rgba(51,51,51,0.8)"
                    <span *ngIf="x.deleted!=='yes'"> 
                     <div class="article-title" >
                         <p class="mb-0">{{x.result_title}}</p>
-                       <!--  <span class="pull-right icon-circle_a"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span> -->
-                        
+                      
                     </div>
                     <div class="article-text">
                             <p>{{x.result_abstract.length>350?x.result_abstract.substring(0,339).concat("..."):x.result_abstract}}</p>
@@ -101,6 +53,7 @@ bdColor="rgba(51,51,51,0.8)"
                                   <small  *ngIf="x.status=='saved as drafted'"   class="label-small open-modals">Saved as Draft</small>
                                   <small  *ngIf="x.status !=='submit for review' && x.status !=='saved as drafted' " (click)="deleteRecord(x.id)" class="label-small">Sumitted for triage</small>
                                   <button type="button" class="btn btn-primary btn-sm open-modals"  data-target="#basemodal" (click)="singleDaata(x)" >Full View</button>
+
                                   
                                 </div>                             
                             
@@ -127,31 +80,6 @@ bdColor="rgba(51,51,51,0.8)"
 </div>
 
 
-<!-- modal -->
-
- <!-- <div class="modal inmodal rounded-corners "   id="myModal" tabindex="-1" role="dialog"  aria-hidden="true">
-  <div class="modal-dialog modal-lg rounded-corners " style="width:100%">
-    <div class="modal-content animated fadeIn rounded-corners " style="background-color: rgb(239, 236, 236);">
-      <div class="rounded-corners" style="background-color: rgb(239, 236, 236); text-align:center;">
-      </div>
-      <div class="panel panel-default">
-        <button type="button" class="close" data-dismiss="modal" (click)="closemodal($event)" >&times;</button>
-        <div class="panel-body" >
-          <p>hello</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-</div>  -->
-
-
-
-
-
-<!-- end modal -->
 
 
 <!-- my modal -->
@@ -199,19 +127,14 @@ bdColor="rgba(51,51,51,0.8)"
 
             <label class="">
                 <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
-                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                <span class="switch-handle"></span> -->
+               
               </label>
-              <!-- <div class="checkbox">
-                <label>
-                  <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                </label>
-              </div> -->
+              
             </div>
                </div>
                <div class="row">
                   <div class="col-md-3">
-                <label> Counter of authorization</label>
+                <label> Country of authorization</label>
                   </div>
                   <div class="col-md-4">
                       <div class="form-group">
@@ -236,8 +159,19 @@ bdColor="rgba(51,51,51,0.8)"
 
                    <label class="text-primary">Product</label>
                    <div class="row">
+                          <div class="col-md-3">
+                        <label class="pl"> Product Name</label>
+                          </div>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                                  <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date">
+                                </div>
+                        </div>
+                           </div>
+                    
+                   <div class="row">
                       <div class="col-md-3">
-                    <label class="pl"> Publication Date</label>
+                    <label class="pl"> Launch Date</label>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
@@ -265,71 +199,7 @@ bdColor="rgba(51,51,51,0.8)"
                                     </div>
                             </div>
                                </div>
-                               <label class="text-primary">Drug</label>
-                   <div class="row">
-                      <div class="col-md-3">
-                    <label class="pl"> Start Date</label>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="draftartData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date" >
-                            </div>
-                    </div>
-                       </div>
-                       <div class="row">
-                          <div class="col-md-3">
-                        <label class="pl"> Approval Date</label>
-                          </div>
-                          <div class="col-md-4">
-                              <div class="form-group">
-                                  <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="draftartData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date">
-                                </div>
-                        </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-3">
-                            <label class="pl"> Withdrawn Date</label>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="form-group">
-                                      <input type="date" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="draftartData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date">
-                                    </div>
-                            </div>
-                               </div>
-                               <div class="row">
-                                  <div class="col-md-3">
-                                <label class="pl"> Route of administration of Drug</label>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="form-group">
-                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="draftartData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug">
-                                        </div>
-                                </div>
-                                   </div>
-                                   <div class="row">
-                                      <div class="col-md-3">
-                                    <label class="pl"> Formulation of Drug</label>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <div class="form-group">
-                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="draftartData['Formulation_of_Drug']" name="Formulation_of_Drug" id="Formulation_of_Drug">
-                                            </div>
-                                    </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-3">
-                                        <label class="pl"> Brand drug mentioned?
-                                          </label>
-                                          </div>
-                                          <div class="col-md-4">
-                                               <label class="">
-                <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
-                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                <span class="switch-handle"></span> -->
-              </label>
-                                        </div>
-
-                                           </div>
+                             
                                            <label class="text-primary">Author Comments</label>
                                            <div class="row">
                                               <div class="col-md-12">
@@ -340,7 +210,7 @@ bdColor="rgba(51,51,51,0.8)"
                                                </div>
                                                
                                                    <div class="modal-footer">
-                                                    <!-- <button type="button" class="btn btn-primary" href="#base-buzz" (click)="('base-buzz')" >Next</button> -->
+                                                   
                                                     <button type="button" class="btn btn-default" data-dismiss="modal" (click)="articleondraft(draftartData)">Save as Draft</button>
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
                                             
@@ -427,8 +297,7 @@ bdColor="rgba(51,51,51,0.8)"
               <input type="checkbox" id="26" name="rememberMe"  >
               <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
               <input type="checkbox" id="27" name="rememberMe"  >
-              <!-- <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden> -->
-
+              
               <label for="27" class="checkbox"></label> Safety communication<br><br>
               <div class="modal-footer">
 
@@ -498,19 +367,14 @@ bdColor="rgba(51,51,51,0.8)"
 
             <label class="">
                 <input type="checkbox" formControlName="belongstatus" [(ngModel)]="belongstatus" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
-                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                <span class="switch-handle"></span> -->
+                
               </label>
-              <!-- <div class="checkbox">
-                <label>
-                  <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs">
-                </label>
-              </div> -->
+              
             </div>
                </div>
                <div class="row">
                   <div class="col-md-3">
-                <label> Counter of authorization</label>
+                <label> County of authorization</label>
                   </div>
                   <div class="col-md-4">
                       <div class="form-group">
@@ -535,43 +399,23 @@ bdColor="rgba(51,51,51,0.8)"
 
                    <label class="text-primary">Product</label>
                    <div class="row">
-                      <div class="col-md-3">
-                    <label class="pl"> Publication Date</label>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <input type="date" class="form-control" formControlName="Publication_Date" [(ngModel)]="draftartData['Publication_Date']" name="Publication_Date" id="Publication_Date" readonly>
-                            </div>
-                    </div>
-                       </div>
-                       <div class="row">
                           <div class="col-md-3">
-                        <label class="pl"> Approval Date</label>
+                        <label class="pl"> Product Name</label>
                           </div>
                           <div class="col-md-4">
                               <div class="form-group">
-                                  <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date" readonly>
+                                  <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date">
                                 </div>
                         </div>
                            </div>
-                           <div class="row">
-                              <div class="col-md-3">
-                            <label class="pl"> Withdrawn Date</label>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="form-group">
-                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date" readonly>
-                                    </div>
-                            </div>
-                               </div>
-                               <label class="text-primary">Drug</label>
+                    
                    <div class="row">
                       <div class="col-md-3">
-                    <label class="pl"> Start Date</label>
+                    <label class="pl"> Launch Date</label>
                       </div>
                       <div class="col-md-4">
                           <div class="form-group">
-                              <input type="date" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="draftartData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date" readonly>
+                              <input type="date" class="form-control" formControlName="Publication_Date" [(ngModel)]="draftartData['Publication_Date']" name="Publication_Date" id="Publication_Date">
                             </div>
                     </div>
                        </div>
@@ -581,7 +425,7 @@ bdColor="rgba(51,51,51,0.8)"
                           </div>
                           <div class="col-md-4">
                               <div class="form-group">
-                                  <input type="date" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="draftartData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date" readonly>
+                                  <input type="date" class="form-control" formControlName="Product_Approval_Date" [(ngModel)]="draftartData['Product_Approval_Date']" name="Product_Approval_Date" id="Product_Approval_Date">
                                 </div>
                         </div>
                            </div>
@@ -591,43 +435,12 @@ bdColor="rgba(51,51,51,0.8)"
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <input type="date" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="draftartData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date" readonly>
+                                      <input type="date" class="form-control" formControlName="Product_Withdrawn_Date" [(ngModel)]="draftartData['Product_Withdrawn_Date']" name="Product_Withdrawn_Date" id="Product_Withdrawn_Date">
                                     </div>
                             </div>
                                </div>
-                               <div class="row">
-                                  <div class="col-md-3">
-                                <label class="pl"> Route of administration of Drug</label>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="form-group">
-                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="draftartData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug" readonly>
-                                        </div>
-                                </div>
-                                   </div>
-                                   <div class="row">
-                                      <div class="col-md-3">
-                                    <label class="pl"> Formulation of Drug</label>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <div class="form-group">
-                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="draftartData['Formulation_of_Drug']" name="Formulation_of_Drug" id="Formulation_of_Drug" readonly>
-                                            </div>
-                                    </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-3">
-                                        <label class="pl"> Brand drug mentioned?
-                                          </label>
-                                          </div>
-                                          <div class="col-md-4">
-                                              <label class="">
-                                                  <input type="checkbox" formControlName="belongstatus"  [(ngModel)]="draftartData['belongstatus']" [checked]="belongstatus" (change)="belongs = !belongs" class="switch-input">
-                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                                                  <span class="switch-handle"></span> -->
-                                                </label>
-                                        </div>
-                                           </div>
+                              
+                                       
                                            <label class="text-primary">Author Comments</label>
                                            <div class="row">
                                               <div class="col-md-12">
@@ -726,8 +539,10 @@ bdColor="rgba(51,51,51,0.8)"
               <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
               <input type="checkbox" id="27" name="rememberMe"  >
               <!-- <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" hidden> -->
-
-              <label for="27" class="checkbox"></label> Safety communication<br><br>
+              
+              <label for="3" class="checkbox"></label>  Brand drug mentioned?<br><br>
+              <input type="checkbox" id="28" name="rememberMe"  >
+              <label for="28" class="checkbox"></label> Safety communication<br><br>
               <div class="modal-footer">
 
 
@@ -814,14 +629,13 @@ bdColor="rgba(51,51,51,0.8)"
 
             <label class="">
                 <input type="checkbox" formControlName="belongstatus" [(ngModel)]="drugsAurobindo" [checked]="belongs" (change)="belongs = !belongs" class="switch-input">
-                <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                <span class="switch-handle"></span> -->
+               
               </label>
             </div>
                </div>
                <div class="row">
                   <div class="col-md-3">
-                <label> Counter of authorization</label>
+                <label> Country of authorization</label>
                   </div>
                   <div class="col-md-4">
                       <div class="form-group">
@@ -871,70 +685,7 @@ bdColor="rgba(51,51,51,0.8)"
                                     </div>
                             </div>
                                </div>
-                               <label class="text-primary">Drug</label>
-                   <div class="row">
-                      <div class="col-md-3">
-                    <label class="pl"> Start Date</label>
-                      </div>
-                      <div class="col-md-4">
-                          <div class="form-group">
-                              <input type="text" class="form-control" formControlName="drug_Start_Date" [(ngModel)]="reviewData['drug_Start_Date']" name="drug_Start_Date" id="drug_Start_Date" readonly >
-                            </div>
-                    </div>
-                       </div>
-                       <div class="row">
-                          <div class="col-md-3">
-                        <label class="pl"> Approval Date</label>
-                          </div>
-                          <div class="col-md-4">
-                              <div class="form-group">
-                                  <input type="text" class="form-control" formControlName="drugApproval_Date" [(ngModel)]="reviewData['drugApproval_Date']" name="drugApproval_Date" id="drugApproval_Date" readonly>
-                                </div>
-                        </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-md-3">
-                            <label class="pl"> Withdrawn Date</label>
-                              </div>
-                              <div class="col-md-4">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" formControlName="drugWithdrawn_Date" [(ngModel)]="reviewData['drugWithdrawn_Date']" name="drugWithdrawn_Date" id="drugWithdrawn_Date" readonly>
-                                    </div>
-                            </div>
-                               </div>
-                               <div class="row">
-                                  <div class="col-md-3">
-                                <label class="pl"> Route of administration of Drug</label>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="form-group">
-                                          <input type="text" class="form-control" formControlName="administration_of_Drug" [(ngModel)]="reviewData['administration_of_Drug']" name="administration_of_Drug" id="administration_of_Drug" readonly>
-                                        </div>
-                                </div>
-                                   </div>
-                                   <div class="row">
-                                      <div class="col-md-3">
-                                    <label class="pl"> Formulation of Drug</label>
-                                      </div>
-                                      <div class="col-md-4">
-                                          <div class="form-group">
-                                              <input type="text" class="form-control" formControlName="Formulation_of_Drug" [(ngModel)]="reviewData['Formulation_of_Drug']" name="Formulation_of_Drug" id="Formulation_of_Drug" readonly>
-                                            </div>
-                                    </div>
-                                       </div>
-                                       <div class="row">
-                                          <div class="col-md-3">
-                                        <label class="pl"> Brand drug mentioned?
-                                          </label>
-                                          </div>
-                                          <div class="col-md-4">
-                                              <label class="">
-                                                  <input type="checkbox" formControlName="Brand_drug_mentioned" [(ngModel)]="Brand_drug_mentioned" [checked]="druged" (change)="druged = !druged" class="switch-input"/>
-                                                  <!-- <span class="switch-label" data-on="Yes" data-off="No"></span> 
-                                                  <span class="switch-handle"></span> -->
-                                                </label>
-                                        </div>
-                                           </div>
+                               
                                            <label class="text-primary">Author Comments</label>
                                            <div class="row">
                                               <div class="col-md-12">
@@ -943,13 +694,7 @@ bdColor="rgba(51,51,51,0.8)"
                                                     </div>
                                             </div>
                                                </div>
-                                               
-                                                   <!-- <div class="modal-footer"> -->
-                                                    <!-- <button type="button" class="btn btn-primary" href="#submited-buzz" (click)="('submited-buzz')" >Next</button> -->
-                                                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
-                                            
-                                                  </div> -->
+
                                       </div>
           <div role="tabpanel" class="tab-pane fade" id="submited-buzz">
               <input type="checkbox" id="1" name="rememberMe"  >
@@ -1032,17 +777,9 @@ bdColor="rgba(51,51,51,0.8)"
               <input type="checkbox" id="26" name="rememberMe"  >
               <label for="26" class="checkbox"></label> Publication study not containing information of importance<br><br>
               <input type="checkbox" id="27" name="rememberMe"  >
-              <!-- <input type="text" id="28" name="articleId" formControlName="articleId" value="asd" > -->
-
+             
               <label for="27" class="checkbox"></label> Safety communication<br><br>
-              <!-- <div class="modal-footer">
-
-
-               <button type="button" class="btn btn-primary" (click)="articleonSubmit()" data-dismiss="modal">Submit for Review</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal" (click)="draftData()">Save as Draft</button>
-               <button type="button" class="btn btn-default" data-dismiss="modal">Clear</button>
-       
-             </div> -->
+             
           </div>
         
        </form>

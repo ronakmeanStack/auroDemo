@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 // Auth Guard Service
-
+import {AuthGuard} from './auth/auth.guard'
 //components
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,6 +19,7 @@ export const appRoute: Routes = [
   {
     path: 'app',
     component: DashboardComponent,
+    canActivate:[AuthGuard],
 
     children: [
       {

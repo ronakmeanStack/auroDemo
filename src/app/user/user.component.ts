@@ -84,7 +84,8 @@ draftForm = new FormGroup(
       Formulation_of_Drug: new FormControl(),
       Brand_drug_mentioned: new FormControl(),
       Author_Comments: new FormControl(),
-      id:new FormControl()
+      id:new FormControl(),
+       product_name: new FormControl()
     }
   )
 
@@ -102,6 +103,8 @@ reviewForm = new FormGroup(
       Formulation_of_Drug: new FormControl(),
       Brand_drug_mentioned: new FormControl(),
       Author_Comments: new FormControl(),
+ product_name: new FormControl()
+      
     }
   )
 

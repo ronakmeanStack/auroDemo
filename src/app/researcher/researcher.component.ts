@@ -49,7 +49,9 @@ private draftartData: Object = {};
  //
 
  private reseachViewData: Object = {};
- constructor(private researchdataService:ResearchdataService, private toastr:ToastrService, private spinner: NgxSpinnerService) { }
+ constructor(private researchdataService:ResearchdataService,
+  private toastr:ToastrService,
+  private spinner: NgxSpinnerService) { }
 
 
 draftForm = new FormGroup(
@@ -67,6 +69,7 @@ draftForm = new FormGroup(
       Formulation_of_Drug: new FormControl(),
       Brand_drug_mentioned: new FormControl(),
       Author_Comments: new FormControl(),
+      product_name: new FormControl()
     }
   )
 
@@ -85,6 +88,7 @@ reviewForm = new FormGroup(
       Formulation_of_Drug: new FormControl(),
       Brand_drug_mentioned: new FormControl(),
       Author_Comments: new FormControl(),
+       product_name: new FormControl()
     }
   )
 
@@ -305,7 +309,7 @@ closemodal() {
        this.closemodal();
     }
     articlesumbit(data){
-      this.showSuccessdraft();
+      this.showSuccessreview();
       console.log("----articleondraft",data)
      this.researchdataService.sumbitreview(data);
       this.closemodal();

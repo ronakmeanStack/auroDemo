@@ -23,6 +23,9 @@ import{LoginService} from './login/login.service'
 import {ResearchdataService} from './services/research.service'
 //extra
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+//auth
+import {AuthGuard} from './auth/auth.guard'
 @NgModule({
   declarations: [AppComponent, LoginComponent, DashboardComponent, NavbarComponent, FooterComponent],
   imports: [
@@ -34,9 +37,10 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     SidebarModule.forRoot(),
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxSpinnerModule
   ],
-  providers: [LoginService,ResearchdataService],
+  providers: [LoginService,ResearchdataService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

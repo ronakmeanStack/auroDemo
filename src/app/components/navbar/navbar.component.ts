@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthGuard} from '../../auth/auth.guard';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +8,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authGuard:AuthGuard) { }
   role=localStorage.getItem('role');
-name=localStorage.getItem('user');
+  name=localStorage.getItem('name');
+  rolevalues;
   public _opened: boolean = false;
  
   public _toggleSidebar() {
     this._opened = !this._opened;
   }
   ngOnInit() {
-  	
+  	this.rolevalues=this.rolevalue();
+    console.log("value is here",this.rolevalues)
+
+  }
+  logout(){
+
+    
+    this.authGuard.logout();
+  }
+  rolevalue(){
+   if(this.role=='1'){
+     return 'Researcher';
+   }
+     if(this.role=='2'){
+       return 'Reviewer';
+     }
+       if(this.role=='3'){
+         return 'Admin';
+       }
   }
 }

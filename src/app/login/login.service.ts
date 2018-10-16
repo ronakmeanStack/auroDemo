@@ -20,10 +20,8 @@ export class LoginService {
 
 
 
-  test1(){
-    /*return this._http.get('/api/getuser').toPromise().then((response) => 
-console.log("-------------",response.json())
-      );*/
+ /* test1(){
+  
       console.log("in service")
 
       return this._http.get('/api/getuser').map( r => r.json())
@@ -34,7 +32,7 @@ console.log("-------------",response.json())
     this.httpClient.get('/api/getuser').subscribe((res)=>{
         console.log(res);
     });
-}
+}*/
 
  
 

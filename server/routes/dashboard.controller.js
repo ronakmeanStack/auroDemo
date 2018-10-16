@@ -125,35 +125,7 @@ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err
       console.log("Number of records inserted: " + result.affectedRows);
     });
   },
-  test:function(req,res){
-    var data =req.body;
-   
   
- var data = {
-            search_term:data[0].search_term,
-            status: data[0].status,
-            }
-
-    connection.query('UPDATE search_results SET ? WHERE id = ' + req.body[0].id, data,(err,result)=>{
-
-      if(err){
-        console.log("getting error",err)
-        res.json({
-          status:400,
-          message:err
-        })
-      }
-
-      else{
-        console.log("not error")
-        res.json({
-          status:200,
-          message:result
-        })
-      }
-
-    })
-  },
   deleteart:function(req,res){
     id=req.body;
     console.log("hitting id",id)
@@ -351,7 +323,8 @@ connection.query('UPDATE search_results SET ? WHERE id = ' + artId, artdata,(err
 
     })
 
-  }
+  },
+  
 
  /* connection.query('UPDATE users SET Name = ? WHERE UserID = ?', [name, userId])*/
 

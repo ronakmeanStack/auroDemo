@@ -7,7 +7,8 @@ import "rxjs/Rx";
 import { Observable } from 'rxjs';
 import {LoginService} from './login.service'
 import{ResearchdataService} from '../services/research.service'
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -21,7 +22,9 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private loginService:LoginService,
-        private researchdataService:ResearchdataService
+        private researchdataService:ResearchdataService,
+        private toastr:ToastrService,
+        private spinner: NgxSpinnerService
         ) {}
 
     ngOnInit() {
@@ -36,28 +39,53 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
+      this.spinner.show();
         this.submitted = true;
+         event.preventDefault();
         console.log("-------",this.f.username.value)
         this.loginService.login(this.f.username.value,this.f.password.value)
-        .subscribe(res => console.log("--res",res))
+        .subscribe(res => {
+          this.spinner.hide();
+          console.log("--res-------------",res)
+            if(res.save==true){
+            console.log("getting true")
+           localStorage.setItem('name',res.name);
+           localStorage.setItem('role',res.role);
+           localStorage.setItem('token',res.token);
+           switch (localStorage.getItem('role')) {
+             case '3':
+               this.successmessageadmin();
+               this.router.navigate(['/app/admin']);
+               break;
+             
+               case '2':
+               this.successmessagereviewer();
+               this.router.navigate(['/app/user']);
+               break;
 
-         if (this.f.username.value == 'tripathy@aurobindo.com' && this.f.password.value == 'tripathy@123') {
-            this.router.navigate(['/app/researcher']);
-            localStorage.setItem('role', 'Researcher');
-            localStorage.setItem('user', ' Dr tripathy');
-          }
-          if (this.f.username.value == 'ram@aurobindo.com' && this.f.password.value == 'ram@123') {
-            this.router.navigate(['/app/admin']);
-            localStorage.setItem('role', 'Admin');
-             localStorage.setItem('user', 'Ram guntur');
-          }
-          if (this.f.username.value == 'ronak@aurobindo.com' && this.f.password.value == 'ronak@123') {
-            this.router.navigate(['/app/reviewer']);
-            localStorage.setItem('role', 'reviewer');
-            localStorage.setItem('user', 'Ronak');
-          } 
+               case '1':
+               this.successmessageresearcher();
+              this.router.navigate(['/app/researcher']);
+           
+               break;
+
+             default:
+               
+               break;
+           }
+            }
+            else{
+             this.errormessage();
+            }
+             
 
 
+        })
+
+
+          
+         
+      
 
 
         if(this.f.username.value)
@@ -69,73 +97,19 @@ export class LoginComponent implements OnInit {
 
       
     }
-    
-   
-
-
-/* onSubmit(event, email, password) {
-    if(email && password != null ){
-      console.log("not null")
-      event.preventDefault();
-      
-     this.loginService.login(this.f.username.value,this.f.password.value)
-        .subscribe(response => {
-          console.log("-----response",response.role)
-          if(response.save === true){
-            localStorage.apiToken=response.token
-            //this.showSuccess()
-            var role= response.role;
-            this.name =response.name;
-            if(role==3){
-              this.roletype="admin"
-            }
-            else if(role==2){
-              this.roletype="Reviewer"
-            }
-            else if(role==1){
-             this.roletype="Researcher"
-            }
-            localStorage.setItem('name',this.name)
-            localStorage.setItem('role',this.roletype)
-           
-
-           switch (role) {
-             case 3:
-               this.router.navigate(['/app/admin']);
-               break;
-             
-               case 2:
-               this.router.navigate(['/app/user']);
-               break;
-
-               case 1:
-              this.router.navigate(['/app/researcher']);
-           
-               break;
-
-             default:
-               
-               break;
-           }
-           
-            
-          }
-          else if(response.save === false){
-            
-           
-            console.log("password or user not matching 11")
-          }
-          }, this.handleError);
-    }
-    else{
-      console.log("password or user not matching")
-       
-    }
+   errormessage(){
+    this.toastr.error('please provide correct username and password', 'Error');
+  }
+  successmessageadmin(){
+     this.toastr.success('welcome admin', 'Sucess');
+  }
+     successmessagereviewer(){
+     this.toastr.success('welcome reviewer', 'Sucess');
+  } 
+     successmessageresearcher(){
+     this.toastr.success('welcome researcher', 'Sucess');
   }
 
-  handleError(error) {
-    console.log(error.status);
-  }*/
 
 
 

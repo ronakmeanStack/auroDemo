@@ -440,3 +440,17 @@ h5.mt-2.mb-2 {
   box-shadow: none;
   margin: 0 3px;
 }
+
+/* main tab styles start here*/
+.auro-tab-main {
+
+}
+.auro-tab-main .nav-tabs {
+  border: 0;
+  padding-bottom: 50px;
+}
+.auro-tab-main > ul > li  > a {
+  display: block;
+  text-decoration: none;
+}
+/* /main tab styles end here*/
